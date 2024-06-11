@@ -1,9 +1,13 @@
 package impl;
 
 import api.ColaStringTDA;
+import api.DiccionarioProvinciasTDA;
 import api.GrafoCiudadesTDA;
 
 public class GrafoCiudadesDinamico implements GrafoCiudadesTDA {
+
+    DiccionarioProvinciasTDA diccionario=new DiccionarioProvinciasDinamico();
+
     class NodoArista{
         int km; // valor de la arista
         NodoGrafo nodoDestino; // a donde apunta la arista
@@ -20,9 +24,11 @@ public class GrafoCiudadesDinamico implements GrafoCiudadesTDA {
         
     public void InicializarGrafo () {
         origen=null;
+        diccionario.InicializarDiccionarioProvinciasTDA();
     }  // siempre que el grafo este inicializado y no exista el nodo
 
-    public void AgregarVertice( String ciudad){ // El vertice se inserta al inicio de la lista de nodos
+    public void AgregarVertice(String provincia ,String ciudad){ // El vertice se inserta al inicio de la lista de nodos
+        diccionario.Agregar(provincia, ciudad);
         NodoGrafo aux = new NodoGrafo() ;
         aux . ciudad = ciudad;
         aux . arista = null ;
@@ -61,9 +67,10 @@ public class GrafoCiudadesDinamico implements GrafoCiudadesTDA {
     }
 
    
-    public  void EliminarVertice ( String ciudad) {
+    public  void EliminarVertice (String provincia, String ciudad) {
         // Se recorre la lista de v´ertices para remover el nodo v y las aristas con este vertice.
         // Distingue el caso que sea el primer nodo
+        diccionario.EliminarValor(provincia, ciudad);
         if ( origen. ciudad == ciudad) {
             origen = origen. sigNodo;
         }

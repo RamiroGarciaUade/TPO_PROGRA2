@@ -52,6 +52,7 @@ public class DiccionarioProvinciasDinamico implements DiccionarioProvinciasTDA{
             nodoClave = new NodoClave();
             nodoClave.clave=clave;
             nodoClave.sigClave= origen; // ?  ORIGEN ESTA VACIO?
+            origen=nodoClave;
         }
         NodoValor aux =nodoClave.ciudades;
         while ( aux != null && aux.ciudad!= ciudad) {
@@ -119,14 +120,13 @@ public class DiccionarioProvinciasDinamico implements DiccionarioProvinciasTDA{
     }
     // siempre que el diccionario est´e inicializado
     public  ColaStringTDA Claves(){ 
-        NodoClave n = origen;
+        NodoClave aux = origen;
         ColaStringTDA c = new ColaStringDinamica() ;
         c.InicializarCola();
-        if ( n!= null ) {
-            NodoValor aux = n. ciudades;
+        if ( aux!= null ) {
             while ( aux != null ) {
-                c.Acoplar( aux. ciudad);
-                aux = aux.sigValor;
+                c.Acoplar( aux.clave);
+                aux = aux.sigClave;
             }
         }
         return c;
