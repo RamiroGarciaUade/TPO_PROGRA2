@@ -1,14 +1,16 @@
 package api;
 
 public interface TPOciudadTDA {
-    void listarProvincias(); // UN DICCIONARIO MULTIPLE?
-    void listarCiudad(); // COLA?
-    void cargarCiudades();
-    void eliminarCiudades();
-    void ciudadesVecinas(); // COLA?
-    double ciudadesPuente(); 
-    void ciudadesPredecesoras();// COLA?
-    void ciudadesExtremo(); // COLA?
-    void ciudadesFuertementeConectadas(); // COLA?
-    double camino(); 
+    void listarProvincias(); // MOSTAR PROVICIAS Y SUS CIUDADES
+    void listarCiudad(); // MOSTAR CIUDADES DE UNA PROVICIA
+    void cargarCiudades(String provicia , String ciudad);
+    void eliminarCiudades(String provicia , String ciudad);
+    void cargarCaminoCiudad(String ciudadOrigen , String ciudadDestino , int km);
+    void eleminarCaminoCiudad(String ciudadOrigen , String ciudadDestino);
+    void ciudadesVecinas(String ciudad); // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
+    void ciudadesPuente(String ciudadOrigen , String ciudadDestino); 
+    void ciudadesPredecesoras (String ciudad);// MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
+    void ciudadesExtremo(); // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
+    void ciudadesFuertementeConectadas(); // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
+    void camino(String ciudadOrigen , String ciudadDestino); // MOSTRAR LOS KM RECORRIDOS Y LAS CIUDADES PUENTES DE A VER
 }

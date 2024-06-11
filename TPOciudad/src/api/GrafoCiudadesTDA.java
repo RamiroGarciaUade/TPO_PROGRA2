@@ -3,9 +3,9 @@ package api;
 public interface GrafoCiudadesTDA {
     void InicializarGrafo () ;
     // siempre que el grafo este inicializado y no exista el nodo
-    void AgregarVertice(String provincia ,String ciudad);
+    void AgregarVertice(String ciudad);
     // siempre que el grafo est´e inicializado y exista el nodo
-    void EliminarVertice (String provincia , String ciudad) ;
+    void EliminarVertice (String ciudad) ;
     // siempre que el grafo este inicializado
     ColaStringTDA Vertices() ;
     // siempre que el grafo este inicializado , no exista la  arista , pero existan ambos nodos
