@@ -9,7 +9,7 @@ public class GrafoCiudadesDinamico implements GrafoCiudadesTDA {
         int km; // valor de la arista
         NodoGrafo nodoDestino; // a donde apunta la arista
         NodoArista sigArista; // Cada nodo puede tener varias arista por eso debemos que cada arista a punta a la sigiente arista que puede tener ese nodo
-        }
+    }
         
     class NodoGrafo{
         String ciudad ; // valor del nodo
@@ -46,16 +46,16 @@ public class GrafoCiudadesDinamico implements GrafoCiudadesTDA {
         // de nodos adyacentes del nodo origen
         NodoArista aux = new NodoArista ();
         aux .km = km ;
-        aux . nodoDestino = n2;  // apunta al nodo destino
-        aux . sigArista = n1 . arista; // aux apunta a la primera arista  
-        n1. arista = aux ; // aux se convierte en la primera arista
+        aux.nodoDestino = n2;  // apunta al nodo destino
+        aux.sigArista = n1 . arista; // aux apunta a la primera arista  
+        n1.arista = aux ; // aux se convierte en la primera arista
 
     }
 
     private NodoGrafo Vert2Nodo( String v) {
         // recorre los nodo para devolver el nodo buscado
         NodoGrafo aux = origen;
-        while ( aux != null && aux .ciudad != v){
+        while ( aux != null && !aux.ciudad.equals(v) ){
             aux = aux . sigNodo;
         }
         return aux ; 

@@ -9,7 +9,7 @@ public class App {
 
         // cargando ciudades
         t1.cargarCiudades("Buenos aires", "CABA");
-        t1.cargarCiudades("Buenos aires", "Mar de plata");
+        t1.cargarCiudades("Buenos aires", "Mar del Plata");
         t1.cargarCiudades("Buenos aires", "La Plata");
         t1.cargarCiudades("Buenos aires", "Tandil");
 
@@ -44,12 +44,12 @@ public class App {
 
         
         t1.cargarCaminoCiudad("Ciudad de Cordoba", "Rawson", 2800);
-        t1.cargarCaminoCiudad("Ciudad de Cordoba", "Río Cuarto", 200);
+        t1.cargarCaminoCiudad("Ciudad de Cordoba", "Rio Cuarto", 200);
 
-        t1.cargarCaminoCiudad("Río Cuarto", "Puerto Madryn", 1150);
+        t1.cargarCaminoCiudad("Rio Cuarto", "Puerto Madryn", 1150);
 
         t1.cargarCaminoCiudad("Villa Carlos Paz", "Ciudad de Cordoba", 40);
-        t1.cargarCaminoCiudad("Villa Carlos Paz", "Río Cuarto", 250);
+        t1.cargarCaminoCiudad("Villa Carlos Paz", "Rio Cuarto", 250);
         t1.cargarCaminoCiudad("Villa Carlos Paz", "Trelew", 1400);
 
         t1.cargarCaminoCiudad("Rawson", "Villa Carlos Paz", 1200);
