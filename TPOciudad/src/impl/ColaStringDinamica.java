@@ -29,7 +29,7 @@ public class ColaStringDinamica implements ColaStringTDA {
         }
     }
 
-    public void DesAcoplar(){
+    public void Desacolar(){
         primero = primero.sig;
         if (primero == null) {
             ultimo = null;
