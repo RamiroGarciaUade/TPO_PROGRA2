@@ -53,7 +53,7 @@ public class TPOciudad implements TPOciudadTDA{
     }
 
     public void ciudadesVecinas(String ciudad){
-        System.out.println("----------Ciudades vecinas de " + ciudad + ":----------");
+        System.out.println("----------Ciudades vecinas de " + ciudad + "----------");
         ColaStringTDA vecinos = grafoCiudad.Vertices();
         while (!vecinos.ColaVacia()) {
             String ciudadVecina = vecinos.Primero();
@@ -65,7 +65,7 @@ public class TPOciudad implements TPOciudadTDA{
     }
 
     public void ciudadesPuente(String ciudadOrigen, String ciudadDestino){
-        System.out.println("----------Ciudades puente entre " + ciudadOrigen + " y " + ciudadDestino + ":----------");
+        System.out.println("----------Ciudades puente entre " + ciudadOrigen + " y " + ciudadDestino + "----------");
         ColaStringTDA todasLasCiudades = grafoCiudad.Vertices();
         while (!todasLasCiudades.ColaVacia()) {
             String ciudadPuente = todasLasCiudades.Primero();
@@ -77,7 +77,7 @@ public class TPOciudad implements TPOciudadTDA{
     }
 
     public void ciudadesPredecesoras(String ciudad){
-        System.out.println("----------Ciudades predecesoras de " + ciudad + ":----------");
+        System.out.println("----------Ciudades predecesoras de " + ciudad + "----------");
         ColaStringTDA todasLasCiudades = grafoCiudad.Vertices();
         while (!todasLasCiudades.ColaVacia()) {
             String ciudadPredecesora = todasLasCiudades.Primero();
@@ -88,18 +88,39 @@ public class TPOciudad implements TPOciudadTDA{
         }
     }
 
-    // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
-    public void ciudadesExtremo(){
-        
+    public void ciudadesExtremo() {
+        System.out.println("----------Ciudades extremo----------");
+        ColaStringTDA todasLasCiudades = grafoCiudad.Vertices();
+        while (!todasLasCiudades.ColaVacia()) {
+            String ciudad = todasLasCiudades.Primero();
+            boolean tieneAristas = false;
+            ColaStringTDA vecinos = grafoCiudad.Vertices();
+            boolean esExtremo = true;
+
+            while (!vecinos.ColaVacia()) {
+                String ciudadVecina = vecinos.Primero();
+                if (grafoCiudad.ExisteArista(ciudad, ciudadVecina)) {
+                    tieneAristas = true;
+                    esExtremo = false; // La ciudad tiene al menos una arista saliente
+                }
+                vecinos.Desacolar();
+            }
+
+            if (!tieneAristas && esExtremo) {
+                System.out.println(ciudad);
+            }
+
+            todasLasCiudades.Desacolar();
+        }
     }
 
-    // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
-    public void ciudadesFuertementeConectadas(){
-        
+
+    public void ciudadesFuertementeConectadas() {
+        System.out.println("----------Ciudades fuertemente conectadas----------");
     }
 
-    // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
-    public void camino(String ciudadOrigen , String ciudadDestino){
-        
+    public void camino(String ciudadOrigen, String ciudadDestino){
+
     }
+
 }

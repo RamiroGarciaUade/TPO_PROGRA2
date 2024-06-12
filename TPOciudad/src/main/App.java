@@ -67,5 +67,10 @@ public class App {
         t1.ciudadesPuente("Mar del Plata", "Ciudad de Córdoba");
 
         t1.ciudadesPredecesoras("Rawson");
+
+        t1.ciudadesExtremo();
+
+        //t1.ciudadesFuertementeConectadas();
+
     }
 }
