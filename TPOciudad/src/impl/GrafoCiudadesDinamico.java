@@ -121,11 +121,11 @@ public class GrafoCiudadesDinamico implements GrafoCiudadesTDA {
     public boolean ExisteArista( String ciudadOrigen , String ciudadDestino ){
         NodoGrafo n1 = Vert2Nodo( ciudadOrigen); // tomas del nodo salida
         NodoArista aux = n1 . arista; // recorres toda la arista del nodo salida para ver si existe una arista apuntando al nodo destino
-        while ( aux != null && aux . nodoDestino. ciudad != ciudadDestino ){
-            aux = aux . sigArista;
+        while ( aux != null && aux.nodoDestino.ciudad != ciudadDestino ){
+            aux = aux.sigArista;
         }
         // Solo si se encontro la arista buscada , aux no es null
-        return aux != null ;
+        return (aux != null) ;
     }
     // siempre que el grafo este inicializado y exista la arista
     public int PesoArista(String ciudadOrigen , String ciudadDestino){

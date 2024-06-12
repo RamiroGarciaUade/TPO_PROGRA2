@@ -53,20 +53,20 @@ public class metodosCola {
         
         while (!colaProvincias.ColaVacia()) {
             ColaStringTDA colaCiudad= c1.Recuperar(colaProvincias.Primero());
-            System.out.println("Provincia:"+colaProvincias.Primero());
-            System.out.println("----------CIUDADES----------");
+            System.out.println("----------PROVINCIA----------");
+            System.out.println(colaProvincias.Primero());
+            System.out.println("----------CIUDADES DE LA PROVINCIA----------");
             metodosCola.mostrarCola(colaCiudad);
             colaProvincias.DesAcoplar();
-            System.out.println("--------------------------");
         }
-        
+        System.out.println("--------------------------");
     }
 
     public static void mostrarCiudades(DiccionarioProvinciasTDA c1){
         ColaStringTDA colaProvincias= c1.Claves();
+        System.out.println("----------CIUDADES----------");
         while (!colaProvincias.ColaVacia()) {
             ColaStringTDA colaCiudad= c1.Recuperar(colaProvincias.Primero());
-            System.out.println("----------CIUDADES----------");
             metodosCola.mostrarCola(colaCiudad);
             colaProvincias.DesAcoplar();
         }

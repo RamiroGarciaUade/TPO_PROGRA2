@@ -6,7 +6,7 @@ import api.TPOciudadTDA;
 
 import impl.DiccionarioProvinciasDinamico;
 import impl.GrafoCiudadesDinamico;
-
+import impl.GrafoCiudadesDinamico.NodoGrafo;
 import algoritmos.metodosCola;
 
 public class TPOciudad implements TPOciudadTDA{
@@ -35,9 +35,7 @@ public class TPOciudad implements TPOciudadTDA{
         }
     }
     public void cargarCaminoCiudad(String ciudadOrigen , String ciudadDestino , int km){
-        if (!grafoCiudad.ExisteArista(ciudadOrigen, ciudadDestino)) {
-            grafoCiudad.AgregarArista(ciudadOrigen, ciudadDestino, km);
-        }
+        grafoCiudad.AgregarArista(ciudadOrigen, ciudadDestino, km);
     }
     
 
