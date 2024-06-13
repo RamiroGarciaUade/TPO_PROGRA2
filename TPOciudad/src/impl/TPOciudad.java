@@ -1,5 +1,6 @@
 package impl;
 
+import api.CaminoTDA;
 import api.ColaStringTDA;
 import api.DiccionarioProvinciasTDA;
 import api.GrafoCiudadesTDA;
@@ -53,8 +54,28 @@ public class TPOciudad implements TPOciudadTDA{
     }
     public ColaStringTDA ciudadesVecinas(String ciudad){
         
-    } // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
+        ColaStringTDA ciudades = new ColaStringDinamica(); 
+        ColaStringTDA ciudades_vecinas= new ColaStringDinamica();
+
+        ciudades.InicializarCola();
+        ciudades_vecinas.InicializarCola();
+        ciudades=grafoCiudad.Vertices();
+        
+        while(!ciudades.ColaVacia()){
+         
+            if(grafoCiudad.ExisteArista(ciudades.Primero(), ciudad)){
+                ciudades_vecinas.Acoplar(ciudades.Primero());
+                ciudades.DesAcoplar();
+            }
+        
+        }
+    
+        return ciudades_vecinas;
+    }
+
+     // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
     public void ciudadesPuente(String ciudadOrigen , String ciudadDestino){
+        
         
     }
     public ColaStringTDA ciudadesPredecesoras (String ciudad){
@@ -66,7 +87,7 @@ public class TPOciudad implements TPOciudadTDA{
     public ColaStringTDA ciudadesFuertementeConectadas(){
         
     } // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
-    public void camino(String ciudadOrigen , String ciudadDestino){
+    public CaminoTDA camino(String ciudadOrigen , String ciudadDestino){
         
     } // MOSTRAR LOS KM RECORRIDOS Y LAS CIUDADES PUENTES DE A VER
 }
