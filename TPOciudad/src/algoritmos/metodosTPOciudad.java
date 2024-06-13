@@ -10,7 +10,7 @@ import impl.DiccionarioProvinciasDinamico;
 
 // CREAR METODO DE PASA UNA COLA A PILA PARA NO REPETIR CODIGO
 
-public class metodosCola {
+public class metodosTPOciudad {
 
 
     public static void pasarCola(ColaStringTDA cola1 , ColaStringTDA cola2){
@@ -56,7 +56,7 @@ public class metodosCola {
             System.out.println("----------PROVINCIA----------");
             System.out.println(colaProvincias.Primero());
             System.out.println("----------CIUDADES DE LA PROVINCIA----------");
-            metodosCola.mostrarCola(colaCiudad);
+            metodosTPOciudad.mostrarCola(colaCiudad);
             colaProvincias.DesAcoplar();
         }
         System.out.println("--------------------------");
@@ -67,7 +67,7 @@ public class metodosCola {
         System.out.println("----------CIUDADES----------");
         while (!colaProvincias.ColaVacia()) {
             ColaStringTDA colaCiudad= c1.Recuperar(colaProvincias.Primero());
-            metodosCola.mostrarCola(colaCiudad);
+            metodosTPOciudad.mostrarCola(colaCiudad);
             colaProvincias.DesAcoplar();
         }
         System.out.println("--------------------------");

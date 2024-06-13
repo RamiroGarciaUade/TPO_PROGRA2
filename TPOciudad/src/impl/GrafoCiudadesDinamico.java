@@ -55,13 +55,12 @@ public class GrafoCiudadesDinamico implements GrafoCiudadesTDA {
     private NodoGrafo Vert2Nodo( String v) {
         // recorre los nodo para devolver el nodo buscado
         NodoGrafo aux = origen;
-        while ( aux != null && aux .ciudad != v){
+        while ( aux != null && !aux.ciudad.equals(v)){
             aux = aux . sigNodo;
         }
         return aux ; 
     }
-
-   
+    
     public  void EliminarVertice (String ciudad) {
         // Se recorre la lista de v´ertices para remover el nodo v y las aristas con este vertice.
         // Distingue el caso que sea el primer nodo
@@ -71,7 +70,7 @@ public class GrafoCiudadesDinamico implements GrafoCiudadesTDA {
         NodoGrafo aux = origen;
         while ( aux != null ){
             this . EliminarAristaNodo ( aux , ciudad); // remueve de aux todas las aristas hacia v ( osea elemina las arista que apuntaba al nodo eleminado) por  cada nodo que le pases
-            if ( aux . sigNodo!= null && aux . sigNodo. ciudad == ciudad) {
+            if ( aux . sigNodo!= null && aux . sigNodo. ciudad.equals(ciudad)) {
                 // Si el siguiente nodo de aux es v , lo elimina
                 aux . sigNodo = aux . sigNodo. sigNodo;
             }
@@ -84,11 +83,11 @@ public class GrafoCiudadesDinamico implements GrafoCiudadesTDA {
         if ( aux != null ) {
             // Si la arista a eliminar es la primera en
             // la lista de nodos adyacentes
-            if ( aux . nodoDestino. ciudad == ciudad){ // mi primera arista tiene  como destino el nodo a sacar? (recorra que cada nodo puede apuntar a otro nodo con solo una arista)
+            if ( aux . nodoDestino. ciudad.equals(ciudad)){ // mi primera arista tiene  como destino el nodo a sacar? (recorra que cada nodo puede apuntar a otro nodo con solo una arista)
                 nodo . arista = aux . sigArista;
             }
             else {
-                while ( aux . sigArista!= null && aux . sigArista.nodoDestino. ciudad != ciudad ){
+                while ( aux . sigArista!= null && aux . sigArista.nodoDestino. ciudad.equals(ciudad) ){
                     aux = aux . sigArista;
                 }
                 if ( aux . sigArista != null ) {
@@ -121,7 +120,7 @@ public class GrafoCiudadesDinamico implements GrafoCiudadesTDA {
     public boolean ExisteArista( String ciudadOrigen , String ciudadDestino ){
         NodoGrafo n1 = Vert2Nodo( ciudadOrigen); // tomas del nodo salida
         NodoArista aux = n1 . arista; // recorres toda la arista del nodo salida para ver si existe una arista apuntando al nodo destino
-        while ( aux != null && aux.nodoDestino.ciudad != ciudadDestino ){
+        while ( aux != null && aux.nodoDestino.ciudad.equals(ciudadDestino) ){
             aux = aux.sigArista;
         }
         // Solo si se encontro la arista buscada , aux no es null
@@ -131,7 +130,7 @@ public class GrafoCiudadesDinamico implements GrafoCiudadesTDA {
     public int PesoArista(String ciudadOrigen , String ciudadDestino){
         NodoGrafo n1 = Vert2Nodo( ciudadOrigen); // tomas del nodo salida
         NodoArista aux = n1 . arista; // recorres toda la arista del nodo salida para ver si existe una arista apuntando al nodo destino
-        while ( aux . nodoDestino. ciudad != ciudadDestino){
+        while ( aux . nodoDestino. ciudad.equals(ciudadDestino)){
             aux = aux . sigArista;
         } 
         // Se encontro la arista entre los dos nodos

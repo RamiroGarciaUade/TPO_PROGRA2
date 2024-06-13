@@ -1,6 +1,7 @@
 package api;
 
 public interface TPOciudadTDA {
+    void cargarDatos();
     void listarProvincias(); // MOSTAR PROVICIAS Y SUS CIUDADES
     void listarCiudad(); // MOSTAR CIUDADES DE UNA PROVICIA
     void cargarCiudades(String provicia , String ciudad);
