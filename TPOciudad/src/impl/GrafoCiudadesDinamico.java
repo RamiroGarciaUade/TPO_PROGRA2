@@ -47,7 +47,7 @@ public class GrafoCiudadesDinamico implements GrafoCiudadesTDA {
         NodoArista aux = new NodoArista ();
         aux .km = km ;
         aux . nodoDestino = n2;  // apunta al nodo destino
-        aux . sigArista = n1 . arista; // aux apunta a la primera arista  
+        aux . sigArista = n1 . arista; // ! aux apunta a la primera arista   
         n1. arista = aux ; // aux se convierte en la primera arista
 
     }
@@ -87,7 +87,7 @@ public class GrafoCiudadesDinamico implements GrafoCiudadesTDA {
                 nodo . arista = aux . sigArista;
             }
             else {
-                while ( aux . sigArista!= null && aux . sigArista.nodoDestino. ciudad.equals(ciudad) ){
+                while ( aux . sigArista!= null && aux . sigArista.nodoDestino.ciudad.equals(ciudad) ){
                     aux = aux . sigArista;
                 }
                 if ( aux . sigArista != null ) {
@@ -136,5 +136,4 @@ public class GrafoCiudadesDinamico implements GrafoCiudadesTDA {
         // Se encontro la arista entre los dos nodos
         return aux . km;
     }
-
 }

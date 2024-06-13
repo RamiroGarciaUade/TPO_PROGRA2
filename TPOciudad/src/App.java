@@ -9,5 +9,7 @@ public class App {
         t1.cargarDatos();
         t1.listarProvincias();
         t1.listarCiudad();
+        t1.ciudadesVecinas("Villa Carlos Paz");
+        t1.ciudadesFuertementeConectadas();
     }
 }

@@ -49,15 +49,17 @@ public class TPOciudad implements TPOciudadTDA{
         cargarCaminoCiudad("Ciudad de Cordoba", "Rawson", 2800);
         cargarCaminoCiudad("Ciudad de Cordoba", "Río Cuarto", 200);
 
-        cargarCaminoCiudad("Río Cuarto", "Puerto Madryn", 1150);
+        cargarCaminoCiudad("Rio Cuarto", "Puerto Madryn", 1150);
 
         cargarCaminoCiudad("Villa Carlos Paz", "Ciudad de Cordoba", 40);
-        cargarCaminoCiudad("Villa Carlos Paz", "Río Cuarto", 250);
+        cargarCaminoCiudad("Villa Carlos Paz", "Rio Cuarto", 250);
         cargarCaminoCiudad("Villa Carlos Paz", "Trelew", 1400);
 
         cargarCaminoCiudad("Rawson", "Villa Carlos Paz", 1200);
         cargarCaminoCiudad("Rawson", "Cafayate", 2200);
+        /* 
         cargarCaminoCiudad("Rawson ", "Trelew", 20);
+        */
     }
 
     public void listarProvincias() { // ? andara?
@@ -113,18 +115,14 @@ public class TPOciudad implements TPOciudadTDA{
             grafoCiudad.EliminarArista(ciudadOrigen, ciudadDestino);
         }
     }
-    public void ciudadesVecinas(String ciudad){
+    public void ciudadesVecinas(String ciudad){ // !
         ColaStringTDA c1 = grafoCiudad.Vertices();
         boolean estado=false;
-        System.out.println("----------CIUDADES VECINAS DE CIUDAD "+ciudad+"----------");
+        System.out.println("----------CIUDADES VECINAS DE "+ciudad+"----------");
         while (!c1.ColaVacia()) {
             if (ciudad != c1.Primero()) {
-                if (grafoCiudad.ExisteArista(ciudad, c1.Primero())) {
-                    System.out.println(ciudad);
-                    estado=true;
-                }
-                else if (grafoCiudad.ExisteArista(c1.Primero() , ciudad)) {
-                    System.out.println(ciudad);
+                if (grafoCiudad.ExisteArista(ciudad, c1.Primero()) || grafoCiudad.ExisteArista(c1.Primero() , ciudad)) {
+                    System.out.println(c1.Primero());
                     estado=true;
                 }
             }
