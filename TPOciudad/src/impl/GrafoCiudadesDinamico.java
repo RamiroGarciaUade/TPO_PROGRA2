@@ -70,12 +70,12 @@ public class GrafoCiudadesDinamico implements GrafoCiudadesTDA {
         }
         NodoGrafo aux = origen;
         while ( aux != null ){
-            this . EliminarAristaNodo ( aux , ciudad); // remueve de aux todas las aristas hacia v ( osea elemina las arista que apuntaba al nodo eleminado) por  cada nodo que le pases
-            if ( aux . sigNodo!= null && aux . sigNodo. ciudad == ciudad) {
+            this.EliminarAristaNodo ( aux , ciudad); // remueve de aux todas las aristas hacia v ( osea elemina las arista que apuntaba al nodo eleminado) por  cada nodo que le pases
+            if ( aux.sigNodo!= null && aux.sigNodo.ciudad == ciudad) {
                 // Si el siguiente nodo de aux es v , lo elimina
-                aux . sigNodo = aux . sigNodo. sigNodo;
+                aux.sigNodo = aux.sigNodo.sigNodo;
             }
-            aux = aux . sigNodo;
+            aux = aux.sigNodo;
         }
     }
 
@@ -84,16 +84,16 @@ public class GrafoCiudadesDinamico implements GrafoCiudadesTDA {
         if ( aux != null ) {
             // Si la arista a eliminar es la primera en
             // la lista de nodos adyacentes
-            if ( aux . nodoDestino. ciudad == ciudad){ // mi primera arista tiene  como destino el nodo a sacar? (recorra que cada nodo puede apuntar a otro nodo con solo una arista)
-                nodo . arista = aux . sigArista;
+            if ( aux.nodoDestino.ciudad == ciudad){ // mi primera arista tiene  como destino el nodo a sacar? (recorra que cada nodo puede apuntar a otro nodo con solo una arista)
+                nodo.arista = aux.sigArista;
             }
             else {
-                while ( aux . sigArista!= null && aux . sigArista.nodoDestino. ciudad != ciudad ){
-                    aux = aux . sigArista;
+                while ( aux.sigArista!= null && aux.sigArista.nodoDestino.ciudad != ciudad ){
+                    aux = aux.sigArista;
                 }
-                if ( aux . sigArista != null ) {
+                if ( aux.sigArista != null ) {
                     // Quita la referencia a la arista hacia v
-                    aux . sigArista = aux . sigArista. sigArista;
+                    aux.sigArista = aux.sigArista.sigArista;
                 }
             }
         }

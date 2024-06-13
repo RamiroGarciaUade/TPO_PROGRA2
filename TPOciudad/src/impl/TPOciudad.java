@@ -1,5 +1,6 @@
 package impl;
 
+import api.ColaStringTDA;
 import api.DiccionarioProvinciasTDA;
 import api.GrafoCiudadesTDA;
 import api.TPOciudadTDA;
@@ -50,19 +51,19 @@ public class TPOciudad implements TPOciudadTDA{
             grafoCiudad.EliminarArista(ciudadOrigen, ciudadDestino);
         }
     }
-    public void ciudadesVecinas(String ciudad){
+    public ColaStringTDA ciudadesVecinas(String ciudad){
         
     } // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
     public void ciudadesPuente(String ciudadOrigen , String ciudadDestino){
         
     }
-    public void ciudadesPredecesoras (String ciudad){
+    public ColaStringTDA ciudadesPredecesoras (String ciudad){
         
     }// MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
-    public void ciudadesExtremo(){
+    public ColaStringTDA ciudadesExtremo(){
         
     } // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
-    public void ciudadesFuertementeConectadas(){
+    public ColaStringTDA ciudadesFuertementeConectadas(){
         
     } // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
     public void camino(String ciudadOrigen , String ciudadDestino){

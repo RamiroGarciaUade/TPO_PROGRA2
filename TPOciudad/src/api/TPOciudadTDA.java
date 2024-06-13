@@ -7,10 +7,10 @@ public interface TPOciudadTDA {
     void eliminarCiudades(String provicia , String ciudad);
     void cargarCaminoCiudad(String ciudadOrigen , String ciudadDestino , int km);
     void eleminarCaminoCiudad(String ciudadOrigen , String ciudadDestino);
-    void ciudadesVecinas(String ciudad); // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
+    ColaStringTDA ciudadesVecinas(String ciudad); // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
     void ciudadesPuente(String ciudadOrigen , String ciudadDestino); 
-    void ciudadesPredecesoras (String ciudad);// MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
-    void ciudadesExtremo(); // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
-    void ciudadesFuertementeConectadas(); // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
+    ColaStringTDA ciudadesPredecesoras (String ciudad);// MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
+    ColaStringTDA ciudadesExtremo(); // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
+    ColaStringTDA ciudadesFuertementeConectadas(); // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
     void camino(String ciudadOrigen , String ciudadDestino); // MOSTRAR LOS KM RECORRIDOS Y LAS CIUDADES PUENTES DE A VER
 }
