@@ -1,12 +1,12 @@
 package api;
 
-public interface TPOciudadTDA {
-    void listarProvincias(); // MOSTAR PROVICIAS Y SUS CIUDADES
-    void listarCiudad(); // MOSTAR CIUDADES DE UNA PROVICIA
+public interface MapaTDA {
+    ColaStringTDA listarProvincias(); // MOSTAR PROVICIAS Y SUS CIUDADES
+    ColaStringTDA listarCiudad(); // MOSTAR CIUDADES DE UNA PROVICIA
     void cargarCiudades(String provicia , String ciudad);
     void eliminarCiudades(String provicia , String ciudad);
     void cargarCaminoCiudad(String ciudadOrigen , String ciudadDestino , int km);
-    void eleminarCaminoCiudad(String ciudadOrigen , String ciudadDestino);
+    void eliminarCaminoCiudad(String ciudadOrigen , String ciudadDestino);
     ColaStringTDA ciudadesVecinas(String ciudad); // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
     void ciudadesPuente(String ciudadOrigen , String ciudadDestino); 
     ColaStringTDA ciudadesPredecesoras (String ciudad);// MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION

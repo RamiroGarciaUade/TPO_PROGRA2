@@ -36,6 +36,18 @@ public class metodosCola {
             aux.DesAcoplar();
         }
     }
+    /*Concatena la cola2 en la cola1 */
+    public static void concatenarCola(ColaStringTDA cola1, ColaStringTDA cola2){
+        ColaStringTDA aux = new ColaStringDinamica();
+        copiarCola(cola2,aux);
+
+
+        while(!aux.ColaVacia()){
+            cola1.Acoplar(aux.Primero());
+            aux.DesAcoplar();
+        }
+
+    }
 
     public static void mostrarCola(ColaStringTDA cola){
         ColaStringTDA aux = new ColaStringDinamica();

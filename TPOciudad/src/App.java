@@ -5,7 +5,7 @@ import impl.*;
 public class App {
 
     public static void main(String[] args) throws Exception {
-        TPOciudadTDA t1 =new TPOciudad();
+        MapaTDA t1 =new Mapa();
 
         // cargando ciudades
         t1.cargarCiudades("Buenos aires", "CABA");
