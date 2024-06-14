@@ -16,7 +16,7 @@ public class ColaStringDinamica implements ColaStringTDA {
         ultimo = null;
     }
 
-    public void Acoplar(String x){
+    public void Acolar(String x){
         Nodo aux = new Nodo();
         aux.info = x;
         aux.sig =null;
@@ -29,7 +29,7 @@ public class ColaStringDinamica implements ColaStringTDA {
         }
     }
 
-    public void DesAcoplar(){
+    public void Desacolar(){
         primero = primero.sig;
         if (primero == null) {
             ultimo = null;
