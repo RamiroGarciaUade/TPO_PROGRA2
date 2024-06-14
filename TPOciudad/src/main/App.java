@@ -6,7 +6,7 @@ import impl.*;
 public class App {
 
     public static void main(String[] args) throws Exception {
-        TPOciudadTDA t1 = new TPOciudad();
+        MapaTDA t1 = new Mapa();
 
         // Cargando ciudades
         t1.cargarCiudades("Buenos Aires", "La Plata");
@@ -62,12 +62,16 @@ public class App {
         t1.listarProvincias();
 
         // Métodos agregados
+        System.out.println("----------Ciudades Vecinas----------");
         t1.ciudadesVecinas("CABA");
 
+        System.out.println("----------Ciudades Puente----------");
         t1.ciudadesPuente("Mar del Plata", "Ciudad de Córdoba");
 
+        System.out.println("----------Ciudades Predecesoras----------");
         t1.ciudadesPredecesoras("Rawson");
 
+        System.out.println("----------Ciudades Extremo----------");
         t1.ciudadesExtremo();
 
         //t1.ciudadesFuertementeConectadas();
