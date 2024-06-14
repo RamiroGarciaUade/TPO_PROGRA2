@@ -112,7 +112,7 @@ public class DiccionarioProvinciasDinamico implements DiccionarioProvinciasTDA{
         if ( n!= null ) {
             NodoValor aux = n. ciudades;
             while ( aux != null ) {
-                c.Acoplar( aux. ciudad);
+                c.Acolar( aux. ciudad);
                 aux = aux.sigValor;
             }
         }
@@ -125,7 +125,7 @@ public class DiccionarioProvinciasDinamico implements DiccionarioProvinciasTDA{
         c.InicializarCola();
         if ( aux!= null ) {
             while ( aux != null ) {
-                c.Acoplar( aux.clave);
+                c.Acolar( aux.clave);
                 aux = aux.sigClave;
             }
         }

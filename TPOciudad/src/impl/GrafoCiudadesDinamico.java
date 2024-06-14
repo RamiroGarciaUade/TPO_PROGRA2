@@ -111,7 +111,7 @@ public class GrafoCiudadesDinamico implements GrafoCiudadesTDA {
         c.InicializarCola(); ;
         NodoGrafo aux = origen;
         while ( aux != null ){
-            c. Acoplar(aux.ciudad ) ;
+            c. Acolar(aux.ciudad ) ;
             aux = aux . sigNodo;
         }
         return c;
