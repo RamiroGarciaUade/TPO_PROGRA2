@@ -34,8 +34,8 @@ public class App {
         t1.cargarCaminoCiudad("CABA", "Tandil", 350);
         t1.cargarCaminoCiudad("CABA", "Ciudad de Cordoba", 1300);
 
-        t1.cargarCaminoCiudad("Mar de plata", "CABA", 500);
-        t1.cargarCaminoCiudad("Mar de plata", "Ciudad de Cordoba", 1800);
+        t1.cargarCaminoCiudad("Mar del Plata", "CABA", 500);
+        t1.cargarCaminoCiudad("Mar del Plata", "Ciudad de Cordoba", 1800);
 
         t1.cargarCaminoCiudad("La Plata", "Ciudad de Cordoba", 1500);
         t1.cargarCaminoCiudad("La Plata", "Rawson", 2700);
