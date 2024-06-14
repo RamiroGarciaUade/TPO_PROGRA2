@@ -11,10 +11,15 @@ import api.MapaTDA;
 import metodos.metodosCola;
 
 public class Mapa implements MapaTDA{
-
     DiccionarioProvinciasTDA diccionario =new DiccionarioProvinciasDinamico();
     GrafoCiudadesTDA mapa =new GrafoCiudadesDinamico();
 
+    
+    public void InicializarMapa(){
+        diccionario.InicializarDiccionarioProvinciasTDA();
+        mapa.InicializarGrafo();
+    }
+    
     public ColaStringTDA listarProvincias() {
         ColaStringTDA aux = new ColaStringDinamica();
         aux = diccionario.Claves();
@@ -168,7 +173,9 @@ public class Mapa implements MapaTDA{
     } 
     
     public ColaStringTDA ciudadesFuertementeConectadas(){
-  
+        ColaStringTDA aux = new ColaStringDinamica();
+
+        return aux;
     } // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
     
     public void camino(String ciudadOrigen , String ciudadDestino){
