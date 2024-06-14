@@ -1,8 +1,11 @@
-package algoritmos;
+package metodos;
+
+
 
 import api.ColaStringTDA;
 import api.DiccionarioProvinciasTDA;
 import impl.ColaStringDinamica;
+
 
 
 // CREAR METODO DE PASA UNA COLA A PILA PARA NO REPETIR CODIGO
@@ -15,7 +18,7 @@ public class metodosCola {
             cola2.Desacolar();
         }
         while (!cola1.ColaVacia()) {
-            cola2.Acoplar(cola1.Primero());
+            cola2.Acolar(cola1.Primero());
             cola1.Desacolar();
         }
     }
@@ -28,8 +31,8 @@ public class metodosCola {
         aux.InicializarCola();
         pasarCola(cola1 ,aux);
         while (!aux.ColaVacia()) {
-            cola1.Acoplar(aux.Primero());
-            cola2.Acoplar(aux.Primero());
+            cola1.Acolar(aux.Primero());
+            cola2.Acolar(aux.Primero());
             aux.Desacolar();
         }
     }
@@ -40,8 +43,8 @@ public class metodosCola {
 
 
         while(!aux.ColaVacia()){
-            cola1.Acoplar(aux.Primero());
-            aux.DesAcoplar();
+            cola1.Acolar(aux.Primero());
+            aux.Desacolar();
         }
 
     }
@@ -51,7 +54,7 @@ public class metodosCola {
         aux.InicializarCola();
         while (!cola.ColaVacia()){
             System.out.println(cola.Primero());
-            aux.Acoplar(cola.Primero());
+            aux.Acolar(cola.Primero());
             cola.Desacolar();
         }
         pasarCola(aux, cola);
