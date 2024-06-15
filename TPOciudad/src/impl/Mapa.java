@@ -19,7 +19,7 @@ public class Mapa implements MapaTDA{
         diccionario.InicializarDiccionarioProvinciasTDA();
         mapa.InicializarGrafo();
     }
-    
+
     public ColaStringTDA listarProvincias() {
         ColaStringTDA aux = new ColaStringDinamica();
         aux = diccionario.Claves();
@@ -60,6 +60,7 @@ public class Mapa implements MapaTDA{
             mapa.AgregarVertice(ciudad);
         }
     }
+    /*Como precondicion es necesario que ambas ciudades esten pre cargadas */
     public void cargarCaminoCiudad(String ciudadOrigen , String ciudadDestino , int km){
         mapa.AgregarArista(ciudadOrigen, ciudadDestino, km);
     }
@@ -87,10 +88,10 @@ public class Mapa implements MapaTDA{
         
         while(!ciudades.ColaVacia()){
          
-            if(mapa.ExisteArista(ciudad, ciudades_vecinas.Primero()) || mapa.ExisteArista(ciudades_vecinas.Primero(), ciudad)){
+            if(mapa.ExisteArista(ciudad, ciudades.Primero()) || mapa.ExisteArista(ciudades.Primero(), ciudad))
                 ciudades_vecinas.Acolar(ciudades.Primero());
-                ciudades.Desacolar();
-            }
+                
+            ciudades.Desacolar();
         
         }
     
