@@ -9,7 +9,7 @@ public interface MapaTDA {
     void cargarCaminoCiudad(String ciudadOrigen , String ciudadDestino , int km);
     void eliminarCaminoCiudad(String ciudadOrigen , String ciudadDestino);
     ColaStringTDA ciudadesVecinas(String ciudad); // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
-    ColaStringTDA ciudadesPuente(String ciudadOrigen , String ciudadDestino); 
+    ColaPrioridadTDA ciudadesPuente(String ciudadOrigen , String ciudadDestino); 
     ColaStringTDA ciudadesPredecesoras (String ciudad);// MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
     ColaStringTDA ciudadesExtremo(); // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
     ColaStringTDA ciudadesFuertementeConectadas(); // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION

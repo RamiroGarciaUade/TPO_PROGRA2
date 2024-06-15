@@ -72,7 +72,7 @@ public class Mapa implements MapaTDA{
             mapa.EliminarVertice(ciudad);
         }
     }
-    public void eleminarCaminoCiudad(String ciudadOrigen , String ciudadDestino){
+    public void eliminarCaminoCiudad(String ciudadOrigen , String ciudadDestino){
         if (mapa.ExisteArista(ciudadOrigen, ciudadDestino)) {
             mapa.EliminarArista(ciudadOrigen, ciudadDestino);
         }
@@ -98,24 +98,24 @@ public class Mapa implements MapaTDA{
         return ciudades_vecinas;
     }
 
-     // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION. Precondición que las ciudades origen y destino pertenezcan.
-    public ColaStringTDA ciudadesPuente(String ciudadOrigen , String ciudadDestino){
+     // De. Precondición que las ciudades origen y destino pertenezcan.
+    public ColaPrioridadTDA ciudadesPuente(String ciudadOrigen , String ciudadDestino){
         
  
         ColaStringTDA vecinos = new ColaStringDinamica();
         ColaStringTDA todasLasCiudades = new ColaStringDinamica();
-        ColaStringTDA puentes = new ColaStringDinamica();
+        ColaPrioridadTDA puentes = new ColaPrioridadDinamica();
 
         vecinos.InicializarCola();
         todasLasCiudades.InicializarCola();
-        puentes.InicializarCola();
+        puentes.inicializarCola();
 
         todasLasCiudades=mapa.Vertices();
         
         while (!todasLasCiudades.ColaVacia()) {
             String ciudadPuente = todasLasCiudades.Primero();
             if (mapa.ExisteArista(ciudadOrigen, ciudadPuente) && mapa.ExisteArista(ciudadPuente, ciudadDestino))
-                puentes.Acolar(ciudadPuente);
+                puentes.acolarPrioridad(mapa.PesoArista(ciudadOrigen, ciudadPuente)+mapa.PesoArista(ciudadPuente, ciudadDestino), ciudadPuente);
             
             todasLasCiudades.Desacolar();
         }
@@ -183,9 +183,5 @@ public class Mapa implements MapaTDA{
 
         
     } // MOSTRAR LOS KM RECORRIDOS Y LAS CIUDADES PUENTES DE A VER
-    @Override
-    public void eliminarCaminoCiudad(String ciudadOrigen, String ciudadDestino) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eliminarCaminoCiudad'");
-    }
+   
 }
