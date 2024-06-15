@@ -144,39 +144,56 @@ public class Mapa implements MapaTDA{
     public ColaStringTDA ciudadesExtremo(){
         
         ColaStringTDA todasLasCiudades = mapa.Vertices();
-        String ciudad = todasLasCiudades.Primero();
-        boolean tieneAristas = false;
-        ColaStringTDA vecinos = mapa.Vertices();
+        String ciudad;
+        //boolean tieneAristas = false;
+        ColaStringTDA vecinos;
         boolean esExtremo = true;
         ColaStringTDA ciudadesExtremo= new ColaStringDinamica();
 
         ciudadesExtremo.InicializarCola();
 
         while (!todasLasCiudades.ColaVacia()) {
-
-
+            esExtremo=true;
+            ciudad = todasLasCiudades.Primero();
+            vecinos = mapa.Vertices();
             while (!vecinos.ColaVacia()) {
       
-                if (mapa.ExisteArista(ciudad, vecinos.Primero())) {
-                    tieneAristas = true;
+                if (mapa.ExisteArista(ciudad, vecinos.Primero())) 
                     esExtremo = false; // La ciudad tiene al menos una arista saliente
-                }
+                
                 vecinos.Desacolar();
             }
 
-            if (!tieneAristas && esExtremo) 
+            if (esExtremo) 
                 ciudadesExtremo.Acolar(ciudad);
             
             todasLasCiudades.Desacolar();
+            
         }
         return ciudadesExtremo;
 
     } 
     
     public ColaStringTDA ciudadesFuertementeConectadas(){
-        ColaStringTDA aux = new ColaStringDinamica();
+        ColaStringTDA ciudades = new ColaStringDinamica();
+        ColaStringTDA ciudades2 = new ColaStringDinamica();
+        ColaStringTDA ciudadesFuertes = new ColaStringDinamica();
 
-        return aux;
+        ciudades.InicializarCola();
+        ciudadesFuertes.InicializarCola();
+        ciudades=mapa.Vertices();
+
+        while(!ciudades.ColaVacia()){
+            metodosCola.copiarCola(ciudades,ciudades2);
+            while (!ciudades2.ColaVacia()) {
+                if(mapa.ExisteArista(ciudades.Primero(), ciudades2.Primero())&& mapa.ExisteArista(ciudades2.Primero(), ciudades.Primero())){
+                    ciudadesFuertes.Acolar(ciudades.Primero());
+                }
+                ciudades2.Desacolar();
+            }
+            ciudades.Desacolar();
+        }
+        return ciudadesFuertes;
     } // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
     
     public void camino(String ciudadOrigen , String ciudadDestino){

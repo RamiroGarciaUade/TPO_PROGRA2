@@ -193,5 +193,78 @@ public class testMapa {
         assert(cola_aux.esVacia());
     
     }
+    @Test
+    public void ciudades_extremo(){
+        MapaTDA test = new Mapa();
+        ColaStringTDA cola_aux = new ColaStringDinamica();
 
+        test.InicializarMapa();
+        cola_aux.InicializarCola();
+
+        test.cargarCiudades("BUENOS AIRES", "CABA");
+        test.cargarCiudades("BUENOS AIRES","LANUS");
+        test.cargarCiudades("CATAMARCA", "BELEN");
+        test.cargarCiudades("CORDOBA", "CORDOBA");
+        test.cargarCiudades("CHUBUT", "TRELEW");
+       
+
+        test.cargarCaminoCiudad("CABA", "TRELEW", 1200);
+        test.cargarCaminoCiudad("TRELEW", "CORDOBA", 2000);
+        test.cargarCaminoCiudad("CORDOBA", "BELEN", 1200);
+        test.cargarCaminoCiudad("CABA", "LANUS", 1200);
+        test.cargarCaminoCiudad("LANUS", "CORDOBA", 1200);
+        
+        
+        cola_aux = test.ciudadesExtremo();
+
+        assert(cola_aux.Primero().equals("BELEN"));
+
+        cola_aux.Desacolar();
+
+        assert(cola_aux.ColaVacia());
+        
+        
+        test.cargarCiudades("FORMOSA", "FORMOSA");
+        test.cargarCaminoCiudad("CABA", "FORMOSA", 3000);
+
+
+        cola_aux = test.ciudadesExtremo();
+
+        assert(cola_aux.Primero().equals("BELEN")||cola_aux.Primero().equals("FORMOSA"));
+
+        cola_aux.Desacolar();
+
+        assert(cola_aux.Primero().equals("BELEN")||cola_aux.Primero().equals("FORMOSA"));
+
+        cola_aux.Desacolar();
+
+        assert(cola_aux.ColaVacia());
+   
+    }
+
+    @Test
+    public void ciudades_fuertemente_conectadas(){
+        MapaTDA test = new Mapa();
+        ColaStringTDA cola_aux = new ColaStringDinamica();
+
+        test.InicializarMapa();
+        cola_aux.InicializarCola();
+
+        test.cargarCiudades("BUENOS AIRES", "CABA");
+        test.cargarCiudades("BUENOS AIRES","LANUS");
+        test.cargarCiudades("CATAMARCA", "BELEN");
+        test.cargarCiudades("CORDOBA", "CORDOBA");
+        test.cargarCiudades("CHUBUT", "TRELEW");
+
+        test.cargarCaminoCiudad("CABA", "TRELEW", 1200);
+        test.cargarCaminoCiudad("TRELEW", "CORDOBA", 2000);
+        test.cargarCaminoCiudad("TRELEW", "CABA", 1200);
+        test.cargarCaminoCiudad("CABA", "LANUS", 1200);
+        test.cargarCaminoCiudad("LANUS", "CABA", 1200);
+        test.cargarCaminoCiudad("LANUS", "CORDOBA", 800);
+
+        cola_aux = test.ciudadesFuertementeConectadas();
+
+        assert(!cola_aux.ColaVacia());
+    }
 }
