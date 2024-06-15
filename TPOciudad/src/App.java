@@ -6,10 +6,24 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         MapaTDA t1 =new Mapa();
+        ColaStringTDA aux = new ColaStringDinamica();
 
+        aux.InicializarCola();
         // cargando ciudades
         t1.cargarCiudades("Buenos aires", "CABA");
-        t1.cargarCiudades("Buenos aires", "Mar del Plata");
+        
+        aux=t1.listarCiudad();
+
+        assert(aux.Primero().equals("CABA"));
+        
+        t1.eliminarCiudades("Buenos aires", "CABA");
+        
+        assert(!aux.Primero().equals("CABA"));
+
+        t1.cargarCiudades("Buenos aires", "CABA");
+
+        assert(aux.Primero().equals("Mar del Plata"));
+        
         t1.cargarCiudades("Buenos aires", "La Plata");
         t1.cargarCiudades("Buenos aires", "Tandil");
 
@@ -54,7 +68,7 @@ public class App {
 
         t1.cargarCaminoCiudad("Rawson", "Villa Carlos Paz", 1200);
         t1.cargarCaminoCiudad("Rawson", "Cafayate", 2200);
-        t1.cargarCaminoCiudad("Rawson ", "Trelew", 20);
+        t1.cargarCaminoCiudad("Rawson", "Trelew", 20);
 
         // mostar
         t1.listarCiudad();
