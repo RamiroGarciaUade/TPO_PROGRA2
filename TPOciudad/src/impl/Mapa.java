@@ -67,13 +67,20 @@ public class Mapa implements MapaTDA{
     }
     
 
-    public void listarProvincias() {
-        metodosCola.mostrarProvinciaCiudad(diccionario);
+    public ColaStringTDA listarProvincias() {
+        return diccionario.Claves();
         
     } // MOSTAR PROVINCIAS Y SUS CIUDADES
-    public void listarCiudad(){
-        metodosCola.mostrarCiudades(diccionario);
+    public ColaStringTDA listarCiudad(){
+        ColaStringTDA provincias = diccionario.Claves();
+        ColaStringTDA ciudades = new ColaStringDinamica();
+        ciudades.InicializarCola();
         
+        while(!provincias.ColaVacia()){
+            ciudades.Acolar(provincias.Primero());
+            provincias.Desacolar();
+        }    
+        return ciudades;
     }// MOSTAR CIUDADES DE UNA PROVICIA
 
     public void cargarCiudades(String provicia , String ciudad){
