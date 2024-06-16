@@ -20,45 +20,65 @@ public class Mapa implements MapaTDA{
         mapa.InicializarGrafo();
     }
 
-    public ColaStringTDA listarProvincias() {
-        ColaStringTDA aux = new ColaStringDinamica();
-        aux = diccionario.Claves();
+    public void cargarDatos(){
+        cargarCiudades("Buenos aires", "La Plata");
+        cargarCiudades("Buenos aires", "Mar del Plata");
+        cargarCiudades("Buenos aires", "Tandil");
+        cargarCiudades("Buenos aires", "CABA");
+
+        cargarCiudades("Cordoba","Ciudad de Cordoba");
+        cargarCiudades("Cordoba","Rio Cuarto");
+        cargarCiudades("Cordoba","Villa Carlos Paz");
+
+        cargarCiudades("Salta", "Cafayate");
+
+        cargarCiudades("Chubut", "Rawson");
+        cargarCiudades("Chubut", "Trelew");
+        cargarCiudades("Chubut", "Puerto Madryn");
+        
+
+        //CARGANDO caminos
+        cargarCaminoCiudad("CABA", "Mar del Plata", 400);
+        cargarCaminoCiudad("CABA", "La Plata", 60);
+        cargarCaminoCiudad("CABA", "Tandil", 350);
+        cargarCaminoCiudad("CABA", "Ciudad de Cordoba", 1300);
+
+        cargarCaminoCiudad("Mar del Plata", "CABA", 500);
+        cargarCaminoCiudad("Mar del Plata", "Ciudad de Cordoba", 1800);
+
+        cargarCaminoCiudad("La Plata", "Ciudad de Cordoba", 1500);
+        cargarCaminoCiudad("La Plata", "Rawson", 2700);
+
+        cargarCaminoCiudad("Tandil", "CABA", 480);
+
+        
+        cargarCaminoCiudad("Ciudad de Cordoba", "Rawson", 2800);
+        cargarCaminoCiudad("Ciudad de Cordoba", "Rio Cuarto", 200);
+
+        cargarCaminoCiudad("Rio Cuarto", "Puerto Madryn", 1150);
+
+        cargarCaminoCiudad("Villa Carlos Paz", "Ciudad de Cordoba", 40);
+        cargarCaminoCiudad("Villa Carlos Paz", "Rio Cuarto", 250);
+        cargarCaminoCiudad("Villa Carlos Paz", "Trelew", 1400);
+
+        cargarCaminoCiudad("Rawson", "Villa Carlos Paz", 1200);
+        cargarCaminoCiudad("Rawson", "Cafayate", 2200);
+        cargarCaminoCiudad("Rawson", "Trelew", 20);
+    }
+    
+
+    public void listarProvincias() {
         metodosCola.mostrarProvinciaCiudad(diccionario);
-        return aux;
         
     } // MOSTAR PROVINCIAS Y SUS CIUDADES
-    public ColaStringTDA listarCiudad(){
-        
-        ColaStringTDA provincias = new ColaStringDinamica();
-        ColaStringTDA ciudades = new ColaStringDinamica();
-
-        provincias.InicializarCola();
-        ciudades.InicializarCola();
-
-        provincias=this.listarProvincias();
-
-        while (!provincias.ColaVacia()){
-            metodosCola.concatenarCola(ciudades, diccionario.Recuperar(provincias.Primero()));
-            provincias.Desacolar();
-        }
-        
+    public void listarCiudad(){
         metodosCola.mostrarCiudades(diccionario);
-        return ciudades;
         
     }// MOSTAR CIUDADES DE UNA PROVICIA
 
     public void cargarCiudades(String provicia , String ciudad){
-        if (mapa == null) {
-            diccionario.InicializarDiccionarioProvinciasTDA();
-            mapa.InicializarGrafo();
-
             diccionario.Agregar(provicia, ciudad);
             mapa.AgregarVertice(ciudad);
-        }
-        else{
-            diccionario.Agregar(provicia, ciudad);
-            mapa.AgregarVertice(ciudad);
-        }
     }
     /*Como precondicion es necesario que ambas ciudades esten pre cargadas */
     public void cargarCaminoCiudad(String ciudadOrigen , String ciudadDestino , int km){

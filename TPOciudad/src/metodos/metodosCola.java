@@ -63,7 +63,6 @@ public class metodosCola {
 
     public static void mostrarProvinciaCiudad(DiccionarioProvinciasTDA c1){
         ColaStringTDA colaProvincias= c1.Claves();
-        
         while (!colaProvincias.ColaVacia()) {
             ColaStringTDA colaCiudad= c1.Recuperar(colaProvincias.Primero());
             System.out.println("----------PROVINCIA----------");

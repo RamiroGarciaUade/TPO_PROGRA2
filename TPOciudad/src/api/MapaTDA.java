@@ -2,8 +2,9 @@ package api;
 
 public interface MapaTDA {
     void InicializarMapa();
-    ColaStringTDA listarProvincias(); // MOSTAR PROVICIAS Y SUS CIUDADES
-    ColaStringTDA listarCiudad(); // MOSTAR CIUDADES DE UNA PROVICIA
+    void cargarDatos();
+    void listarProvincias(); // MOSTAR PROVICIAS Y SUS CIUDADES
+    void listarCiudad(); // MOSTAR CIUDADES DE UNA PROVICIA
     void cargarCiudades(String provicia , String ciudad);
     void eliminarCiudades(String provicia , String ciudad);
     void cargarCaminoCiudad(String ciudadOrigen , String ciudadDestino , int km);
