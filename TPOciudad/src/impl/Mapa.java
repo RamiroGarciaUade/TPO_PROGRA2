@@ -3,9 +3,11 @@ package impl;
 
 import api.ColaPrioridadTDA;
 import api.ColaStringTDA;
+import api.ConjuntoTDA;
 import api.DiccionarioProvinciasTDA;
 import api.GrafoCiudadesTDA;
 import api.MapaTDA;
+import metodos.metodosConjuntos;
 
 
 import metodos.metodosCola;
@@ -189,23 +191,26 @@ public class Mapa implements MapaTDA{
     public ColaStringTDA ciudadesFuertementeConectadas(){
         ColaStringTDA ciudades = new ColaStringDinamica();
         ColaStringTDA ciudades2 = new ColaStringDinamica();
-        ColaStringTDA ciudadesFuertes = new ColaStringDinamica();
-
+        ConjuntoTDA ciudadesFuertes = new ConjuntoDinamico();
+        ColaStringTDA cola = new ColaStringDinamica();
+        
         ciudades.InicializarCola();
-        ciudadesFuertes.InicializarCola();
+        ciudadesFuertes.inicializarConjunto();;
         ciudades=mapa.Vertices();
 
         while(!ciudades.ColaVacia()){
             metodosCola.copiarCola(ciudades,ciudades2);
             while (!ciudades2.ColaVacia()) {
                 if(mapa.ExisteArista(ciudades.Primero(), ciudades2.Primero()) && mapa.ExisteArista(ciudades2.Primero(), ciudades.Primero())){
-                    ciudadesFuertes.Acolar(ciudades.Primero());
+                    ciudadesFuertes.agregar(ciudades.Primero());
+                    ciudadesFuertes.agregar(ciudades2.Primero());
                 }
                 ciudades2.Desacolar();
             }
             ciudades.Desacolar();
         }
-        return ciudadesFuertes;
+        cola= metodosConjuntos.conjuntoToCola(ciudadesFuertes);
+        return cola;
     } // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
     
     public ColaPrioridadTDA camino(String ciudadOrigen , String ciudadDestino){

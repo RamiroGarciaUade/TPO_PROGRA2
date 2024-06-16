@@ -1,11 +1,8 @@
 package impl;
 
+
 import api.ColaStringTDA;
 
-class Nodo {
-    String info;
-    Nodo sig; // Es un puntero que apunta  direccion de memoria del nodo que esta apuntarando
-}
 
 public class ColaStringDinamica implements ColaStringTDA {
     Nodo primero;
