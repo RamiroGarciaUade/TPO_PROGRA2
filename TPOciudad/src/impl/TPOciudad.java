@@ -62,7 +62,7 @@ public class TPOciudad implements TPOciudadTDA{
         */
     }
 
-    public void listarProvincias() { // ? andara?
+    public void  listarProvincias() { // ? andara?
         ColaStringTDA colaProvincias= diccionario.Claves();
         
         while (!colaProvincias.ColaVacia()) {
@@ -121,7 +121,7 @@ public class TPOciudad implements TPOciudadTDA{
         System.out.println("----------CIUDADES VECINAS DE "+ciudad+"----------");
         while (!c1.ColaVacia()) {
             if (ciudad != c1.Primero()) {
-                if (grafoCiudad.ExisteArista(ciudad, c1.Primero()) || grafoCiudad.ExisteArista(c1.Primero() , ciudad)) {
+                if (grafoCiudad.ExisteArista(ciudad, c1.Primero()) || grafoCiudad.ExisteArista(c1.Primero(), ciudad)) {
                     System.out.println(c1.Primero());
                     estado=true;
                 }

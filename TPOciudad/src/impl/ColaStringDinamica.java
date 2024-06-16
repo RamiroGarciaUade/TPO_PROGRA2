@@ -2,21 +2,23 @@ package impl;
 
 import api.ColaStringTDA;
 
+class Nodo {
+    String info;
+    Nodo sig; // Es un puntero que apunta  direccion de memoria del nodo que esta apuntarando
+}
+
 public class ColaStringDinamica implements ColaStringTDA {
     Nodo primero;
     Nodo ultimo;
 
-    class Nodo {
-        String info;
-        Nodo sig; // Es un puntero que apunta  direccion de memoria del nodo que esta apuntarando
-    }
+
 
     public void InicializarCola(){
         primero = null;
         ultimo = null;
     }
 
-    public void Acoplar(String x){
+    public void Acolar(String x){
         Nodo aux = new Nodo();
         aux.info = x;
         aux.sig =null;
@@ -29,7 +31,7 @@ public class ColaStringDinamica implements ColaStringTDA {
         }
     }
 
-    public void DesAcoplar(){
+    public void Desacolar(){
         primero = primero.sig;
         if (primero == null) {
             ultimo = null;
