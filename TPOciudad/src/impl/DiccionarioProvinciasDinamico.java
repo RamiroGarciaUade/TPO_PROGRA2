@@ -45,7 +45,7 @@ public class DiccionarioProvinciasDinamico implements DiccionarioProvinciasTDA{
     public void InicializarDiccionarioProvinciasTDA () {
         origen = null;
     }
-    // siempre que el diccionario est´e inicializado  conjunto de valores, pero esos valores no se pueden repetir.
+
     public void Agregar( String clave , String ciudad){
         NodoClave nodoClave = BuscarNodoClave(clave);
         if (nodoClave == null) { // Si no esta en los nodos crea nuevo nodo clave para unir a los nodos claves
@@ -81,7 +81,7 @@ public class DiccionarioProvinciasDinamico implements DiccionarioProvinciasTDA{
             }
         }
     }
-    // siempre que el diccionario est´e inicializado
+
     public void EliminarValor( String clave , String ciudad){
         if ( origen!=null ) {
             if ( origen. clave == clave) {
@@ -104,8 +104,8 @@ public class DiccionarioProvinciasDinamico implements DiccionarioProvinciasTDA{
             }
         }
     }
-    // siempre que el diccionario est´e inicializado eliminar el valor, la clave no tiene otros valores asociados se debe eliminar la misma.
-    public ColaStringTDA Recuperar( String clave ){ 
+
+    public ColaStringTDA Recuperar( String clave ){
         NodoClave n = BuscarNodoClave( clave) ;
         ColaStringTDA c = new ColaStringDinamica() ;
         c.InicializarCola(); ;
@@ -118,8 +118,8 @@ public class DiccionarioProvinciasDinamico implements DiccionarioProvinciasTDA{
         }
         return c;
     }
-    // siempre que el diccionario est´e inicializado
-    public  ColaStringTDA Claves(){ 
+
+    public  ColaStringTDA Claves(){
         NodoClave aux = origen;
         ColaStringTDA c = new ColaStringDinamica() ;
         c.InicializarCola();

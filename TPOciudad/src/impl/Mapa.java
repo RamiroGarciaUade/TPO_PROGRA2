@@ -69,20 +69,21 @@ public class Mapa implements MapaTDA{
 
     public ColaStringTDA listarProvincias() {
         return diccionario.Claves();
-        
-    } // MOSTAR PROVINCIAS Y SUS CIUDADES
+    }
+
     public ColaStringTDA listarCiudad(){
         return mapa.Vertices();
     }
+
     public void cargarCiudades(String provicia , String ciudad){
             diccionario.Agregar(provicia, ciudad);
             mapa.AgregarVertice(ciudad);
     }
+
     /*Como precondicion es necesario que ambas ciudades esten pre cargadas */
     public void cargarCaminoCiudad(String ciudadOrigen , String ciudadDestino , int km){
         mapa.AgregarArista(ciudadOrigen, ciudadDestino, km);
     }
-    
 
     public void eliminarCiudades(String provicia , String ciudad){
         if (mapa != null) {
@@ -90,11 +91,13 @@ public class Mapa implements MapaTDA{
             mapa.EliminarVertice(ciudad);
         }
     }
+
     public void eliminarCaminoCiudad(String ciudadOrigen , String ciudadDestino){
         if (mapa.ExisteArista(ciudadOrigen, ciudadDestino)) {
             mapa.EliminarArista(ciudadOrigen, ciudadDestino);
         }
     }
+
     public ColaStringTDA ciudadesVecinas(String ciudad){
         
         ColaStringTDA ciudades = new ColaStringDinamica(); 
@@ -153,7 +156,8 @@ public class Mapa implements MapaTDA{
         }
         return ciudadesPredecesoras;
 
-    }// MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
+    }
+
     public ColaStringTDA ciudadesExtremo(){
         
         ColaStringTDA todasLasCiudades = mapa.Vertices();
@@ -207,7 +211,7 @@ public class Mapa implements MapaTDA{
             ciudades.Desacolar();
         }
         return ciudadesFuertes;
-    } // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
+    }
     
     public ColaPrioridadTDA camino(String ciudadOrigen , String ciudadDestino){
         ColaStringTDA todasLasCiudades = new ColaStringDinamica();
@@ -228,6 +232,6 @@ public class Mapa implements MapaTDA{
         if (mapa.ExisteArista(ciudadOrigen, ciudadDestino))
             caminos.acolarPrioridad(mapa.PesoArista(ciudadOrigen,ciudadDestino), "No tiene ciudad puente");
         return caminos;
-    } // MOSTRAR LOS KM RECORRIDOS Y LAS CIUDADES PUENTES DE A VER
+    }
    
 }

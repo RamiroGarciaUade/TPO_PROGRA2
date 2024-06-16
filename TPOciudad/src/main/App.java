@@ -2,6 +2,7 @@ package main;
 
 import api.*;
 import impl.*;
+import metodos.metodosCola;
 
 public class App {
 
@@ -63,16 +64,17 @@ public class App {
 
         // Métodos agregados
         System.out.println("----------Ciudades Vecinas----------");
-        t1.ciudadesVecinas("CABA");
+        metodosCola.mostrarCola(t1.ciudadesVecinas("CABA"));
 
         System.out.println("----------Ciudades Puente----------");
-        t1.ciudadesPuente("Mar del Plata", "Ciudad de Córdoba");
+        metodosCola.mostrarCola(t1.ciudadesPuente("Mar del Plata", "Ciudad de Córdoba"));
+
 
         System.out.println("----------Ciudades Predecesoras----------");
-        t1.ciudadesPredecesoras("Rawson");
+        metodosCola.mostrarCola(t1.ciudadesPredecesoras("Rawson"));
 
         System.out.println("----------Ciudades Extremo----------");
-        t1.ciudadesExtremo();
+        metodosCola.mostrarCola(t1.ciudadesExtremo());
 
         //t1.ciudadesFuertementeConectadas();
 
