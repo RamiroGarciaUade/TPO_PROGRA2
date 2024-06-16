@@ -72,17 +72,8 @@ public class Mapa implements MapaTDA{
         
     } // MOSTAR PROVINCIAS Y SUS CIUDADES
     public ColaStringTDA listarCiudad(){
-        ColaStringTDA provincias = diccionario.Claves();
-        ColaStringTDA ciudades = new ColaStringDinamica();
-        ciudades.InicializarCola();
-        
-        while(!provincias.ColaVacia()){
-            ciudades.Acolar(provincias.Primero());
-            provincias.Desacolar();
-        }    
-        return ciudades;
-    }// MOSTAR CIUDADES DE UNA PROVICIA
-
+        return mapa.Vertices();
+    }
     public void cargarCiudades(String provicia , String ciudad){
             diccionario.Agregar(provicia, ciudad);
             mapa.AgregarVertice(ciudad);
