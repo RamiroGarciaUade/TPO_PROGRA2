@@ -264,7 +264,14 @@ public class testMapa {
         test.cargarCaminoCiudad("LANUS", "CORDOBA", 800);
 
         cola_aux = test.ciudadesFuertementeConectadas();
-
+        assert(cola_aux.Primero().equals("LANUS")||cola_aux.Primero().equals("CABA")||cola_aux.Primero().equals("TRELEW"));
+        cola_aux.Desacolar();
+        assert(cola_aux.Primero().equals("LANUS")||cola_aux.Primero().equals("CABA")||cola_aux.Primero().equals("TRELEW"));
         assert(!cola_aux.ColaVacia());
+        cola_aux.Desacolar();
+        assert(cola_aux.Primero().equals("LANUS")||cola_aux.Primero().equals("CABA")||cola_aux.Primero().equals("TRELEW"));
+        cola_aux.Desacolar();
+        assert(cola_aux.ColaVacia());
+
     }
 }

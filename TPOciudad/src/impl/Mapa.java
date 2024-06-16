@@ -3,9 +3,11 @@ package impl;
 
 import api.ColaPrioridadTDA;
 import api.ColaStringTDA;
+import api.ConjuntoTDA;
 import api.DiccionarioProvinciasTDA;
 import api.GrafoCiudadesTDA;
 import api.MapaTDA;
+import metodos.metodosConjuntos;
 
 
 import metodos.metodosCola;
@@ -69,21 +71,20 @@ public class Mapa implements MapaTDA{
 
     public ColaStringTDA listarProvincias() {
         return diccionario.Claves();
-    }
-
+        
+    } // MOSTAR PROVINCIAS Y SUS CIUDADES
     public ColaStringTDA listarCiudad(){
         return mapa.Vertices();
     }
-
     public void cargarCiudades(String provicia , String ciudad){
             diccionario.Agregar(provicia, ciudad);
             mapa.AgregarVertice(ciudad);
     }
-
     /*Como precondicion es necesario que ambas ciudades esten pre cargadas */
     public void cargarCaminoCiudad(String ciudadOrigen , String ciudadDestino , int km){
         mapa.AgregarArista(ciudadOrigen, ciudadDestino, km);
     }
+    
 
     public void eliminarCiudades(String provicia , String ciudad){
         if (mapa != null) {
@@ -91,13 +92,11 @@ public class Mapa implements MapaTDA{
             mapa.EliminarVertice(ciudad);
         }
     }
-
     public void eliminarCaminoCiudad(String ciudadOrigen , String ciudadDestino){
         if (mapa.ExisteArista(ciudadOrigen, ciudadDestino)) {
             mapa.EliminarArista(ciudadOrigen, ciudadDestino);
         }
     }
-
     public ColaStringTDA ciudadesVecinas(String ciudad){
         
         ColaStringTDA ciudades = new ColaStringDinamica(); 
@@ -156,13 +155,11 @@ public class Mapa implements MapaTDA{
         }
         return ciudadesPredecesoras;
 
-    }
-
+    }// MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
     public ColaStringTDA ciudadesExtremo(){
         
         ColaStringTDA todasLasCiudades = mapa.Vertices();
         String ciudad;
-        //boolean tieneAristas = false;
         ColaStringTDA vecinos;
         boolean esExtremo = true;
         ColaStringTDA ciudadesExtremo= new ColaStringDinamica();
@@ -194,24 +191,27 @@ public class Mapa implements MapaTDA{
     public ColaStringTDA ciudadesFuertementeConectadas(){
         ColaStringTDA ciudades = new ColaStringDinamica();
         ColaStringTDA ciudades2 = new ColaStringDinamica();
-        ColaStringTDA ciudadesFuertes = new ColaStringDinamica();
-
+        ConjuntoTDA ciudadesFuertes = new ConjuntoDinamico();
+        ColaStringTDA cola = new ColaStringDinamica();
+        
         ciudades.InicializarCola();
-        ciudadesFuertes.InicializarCola();
+        ciudadesFuertes.inicializarConjunto();;
         ciudades=mapa.Vertices();
 
         while(!ciudades.ColaVacia()){
             metodosCola.copiarCola(ciudades,ciudades2);
             while (!ciudades2.ColaVacia()) {
-                if(mapa.ExisteArista(ciudades.Primero(), ciudades2.Primero())&& mapa.ExisteArista(ciudades2.Primero(), ciudades.Primero())){
-                    ciudadesFuertes.Acolar(ciudades.Primero());
+                if(mapa.ExisteArista(ciudades.Primero(), ciudades2.Primero()) && mapa.ExisteArista(ciudades2.Primero(), ciudades.Primero())){
+                    ciudadesFuertes.agregar(ciudades.Primero());
+                    ciudadesFuertes.agregar(ciudades2.Primero());
                 }
                 ciudades2.Desacolar();
             }
             ciudades.Desacolar();
         }
-        return ciudadesFuertes;
-    }
+        cola= metodosConjuntos.conjuntoToCola(ciudadesFuertes);
+        return cola;
+    } // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
     
     public ColaPrioridadTDA camino(String ciudadOrigen , String ciudadDestino){
         ColaStringTDA todasLasCiudades = new ColaStringDinamica();
@@ -232,6 +232,6 @@ public class Mapa implements MapaTDA{
         if (mapa.ExisteArista(ciudadOrigen, ciudadDestino))
             caminos.acolarPrioridad(mapa.PesoArista(ciudadOrigen,ciudadDestino), "No tiene ciudad puente");
         return caminos;
-    }
+    } // MOSTRAR LOS KM RECORRIDOS Y LAS CIUDADES PUENTES DE A VER
    
 }
