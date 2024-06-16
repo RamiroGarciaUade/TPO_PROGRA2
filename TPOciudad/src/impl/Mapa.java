@@ -158,7 +158,6 @@ public class Mapa implements MapaTDA{
         
         ColaStringTDA todasLasCiudades = mapa.Vertices();
         String ciudad;
-        //boolean tieneAristas = false;
         ColaStringTDA vecinos;
         boolean esExtremo = true;
         ColaStringTDA ciudadesExtremo= new ColaStringDinamica();
@@ -199,7 +198,7 @@ public class Mapa implements MapaTDA{
         while(!ciudades.ColaVacia()){
             metodosCola.copiarCola(ciudades,ciudades2);
             while (!ciudades2.ColaVacia()) {
-                if(mapa.ExisteArista(ciudades.Primero(), ciudades2.Primero())&& mapa.ExisteArista(ciudades2.Primero(), ciudades.Primero())){
+                if(mapa.ExisteArista(ciudades.Primero(), ciudades2.Primero()) && mapa.ExisteArista(ciudades2.Primero(), ciudades.Primero())){
                     ciudadesFuertes.Acolar(ciudades.Primero());
                 }
                 ciudades2.Desacolar();
