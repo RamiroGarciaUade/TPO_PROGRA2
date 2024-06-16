@@ -7,6 +7,7 @@ import metodos.metodosCola;
 public class App {
 
     public static void main(String[] args) throws Exception {
+        /*
         MapaTDA t1 = new Mapa();
 
         // Cargando ciudades
@@ -67,7 +68,7 @@ public class App {
         metodosCola.mostrarCola(t1.ciudadesVecinas("CABA"));
 
         System.out.println("----------Ciudades Puente----------");
-        metodosCola.mostrarCola(t1.ciudadesPuente("Mar del Plata", "Ciudad de Córdoba"));
+        metodosCola.mostrarCiudadesColaPrioridad(t1.ciudadesPuente("Mar del Plata", "Ciudad de Córdoba"));
 
 
         System.out.println("----------Ciudades Predecesoras----------");
@@ -76,7 +77,7 @@ public class App {
         System.out.println("----------Ciudades Extremo----------");
         metodosCola.mostrarCola(t1.ciudadesExtremo());
 
-        //t1.ciudadesFuertementeConectadas();
+        */
 
     }
 }

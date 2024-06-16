@@ -9,10 +9,10 @@ public class App {
         MapaTDA t1 =new Mapa();
         t1.InicializarMapa();
         t1.cargarDatos();
-        System.out.println("++++++CIUDADES+++++");
+        System.out.println("----------CIUDADES----------");
         ColaStringTDA ac =t1.listarCiudad();
         metodosCola.mostrarCola(ac);
-        System.out.println("+++++PROVICIA++++++");
+        System.out.println("----------PROVICIAS----------");
         ColaStringTDA at =t1.listarProvincias();
         metodosCola.mostrarCola(at);
 

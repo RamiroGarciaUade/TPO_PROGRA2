@@ -88,12 +88,10 @@ public class metodosCola {
 
     public static void mostrarCiudadesColaPrioridad(ColaPrioridadTDA c){
         ColaPrioridadTDA c1=c;
-        System.out.println("----------CIUDADES Y SU KM A RECORRER----------");
         while (!c1.esVacia()) {
             System.out.println(c1.tope()+"--"+c1.prioridad()+"KM");
             c1.desacolar();
         }
-        System.out.println("--------------------------");
     }
 
     
