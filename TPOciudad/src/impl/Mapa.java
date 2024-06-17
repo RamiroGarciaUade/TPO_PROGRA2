@@ -223,37 +223,32 @@ public class Mapa implements MapaTDA{
         resultado.inicializarCola();
         
         // Cola para mantener el camino actual
-        ColaStringTDA caminoActual = new ColaStringDinamica();
-        caminoActual.InicializarCola();
+        ColaPrioridadTDA caminoActual = new ColaPrioridadDinamica();
+        caminoActual.inicializarCola();
         
         // Conjunto para evitar ciclos
         ConjuntoTDA visitadas = new ConjuntoDinamico();
         visitadas.inicializarConjunto();
         
         // Variable para mantener la distancia total
-        int[] distanciaTotal = {0};
+        int [] distanciaTotal ={0};
         
-        // Iniciar la búsqueda recursiva
-        if (buscarCamino(ciudadOrigen, ciudadDestino, caminoActual, visitadas, distanciaTotal)) {
-            resultado.acolarPrioridad(distanciaTotal[0], "Distancia Total: " + distanciaTotal[0] + " km");
-            while (!caminoActual.ColaVacia()) {
-                resultado.acolarPrioridad(0, caminoActual.Primero());
-                caminoActual.Desacolar();
-            }
-        } else {
-            resultado.acolarPrioridad(0, "No se encontró camino");
-        }
-        
-        return resultado;
+        buscarCamino(ciudadOrigen, ciudadDestino, caminoActual, visitadas, distanciaTotal);
+        return caminoActual;
+
+       
+  
     }
     
-    private boolean buscarCamino(String actual, String destino, ColaStringTDA caminoActual, ConjuntoTDA visitadas, int[] distanciaTotal) {
+    private boolean buscarCamino(String actual, String destino, ColaPrioridadTDA caminoActual, ConjuntoTDA visitadas, int[] distanciaTotal) {
         // Marcar la ciudad actual como visitada
-        visitadas.agregar(actual);
-        caminoActual.Acolar(actual);
+        
         
         // Si hemos llegado al destino, retornar true
         if (actual.equals(destino)) {
+            visitadas.agregar(actual);
+            caminoActual.acolarPrioridad(distanciaTotal[0],actual);
+ 
             return true;
         }
         
@@ -267,16 +262,19 @@ public class Mapa implements MapaTDA{
             // Si el vecino no ha sido visitado y hay un camino hacia él
             if (!visitadas.pertenece(vecino) && mapa.ExisteArista(actual, vecino)) {
                 int distancia = mapa.PesoArista(actual, vecino);
-                distanciaTotal[0] += distancia;
+                    distanciaTotal[0] += distancia;
+                    visitadas.agregar(actual);
                 if (buscarCamino(vecino, destino, caminoActual, visitadas, distanciaTotal)) {
+                    distanciaTotal[0]-=distancia;
+                    caminoActual.acolarPrioridad(distanciaTotal[0],actual);
+                    
                     return true;
                 }
-                distanciaTotal[0] -= distancia; // Deshacer la distancia si no encontramos un camino
+                distanciaTotal[0]-=distancia;
             }
         }
         
-        // Si no encontramos un camino, deshacemos la última ciudad visitada
-        caminoActual.Desacolar();
+
         return false;
     }
         

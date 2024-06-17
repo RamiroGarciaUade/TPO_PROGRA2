@@ -291,18 +291,23 @@ public class testMapa {
         test.cargarCiudades("FORMOSA", "FORMOSA");
 
         test.cargarCaminoCiudad("CABA", "TRELEW", 1200);
+   
         test.cargarCaminoCiudad("TRELEW", "CORDOBA", 2000);
         test.cargarCaminoCiudad("CORDOBA", "FORMOSA", 1200);
         test.cargarCaminoCiudad("TRELEW", "FORMOSA", 1200);
-        /*test.cargarCaminoCiudad("LANUS", "CABA", 1200);
-        test.cargarCaminoCiudad("LANUS", "CORDOBA", 800);
+        test.cargarCaminoCiudad("FORMOSA", "LANUS", 2500);
+        test.cargarCaminoCiudad("LANUS", "CABA", 1200);
+        /*test.cargarCaminoCiudad("LANUS", "CORDOBA", 800);
         test.cargarCaminoCiudad("TRELEW","BELEN" , 1500);
         test.cargarCaminoCiudad("BELEN", "FORMOSA", 1500);*/
 
         cola_aux= test.camino("CABA", "FORMOSA");
-        System.out.println(cola_aux.tope());
-        metodosCola.mostrarCiudadesColaPrioridad(cola_aux);
+        
+        cola_aux = test.camino("CABA", "BELEN");
 
+        cola_aux=test.camino("CABA", "CORDOBA");
+
+        cola_aux=test.camino("CABA", "LANUS");
 
        // assert(cola_aux.tope().equals("TRELEW")||cola_aux.tope().equals("CORDOBA"));
     }
