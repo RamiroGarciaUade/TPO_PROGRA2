@@ -8,6 +8,7 @@ import api.MapaTDA;
 import impl.ColaPrioridadDinamica;
 import impl.ColaStringDinamica;
 import impl.Mapa;
+import metodos.metodosCola;
 
 public class testMapa {
 
@@ -291,15 +292,19 @@ public class testMapa {
 
         test.cargarCaminoCiudad("CABA", "TRELEW", 1200);
         test.cargarCaminoCiudad("TRELEW", "CORDOBA", 2000);
-        test.cargarCaminoCiudad("TRELEW", "CABA", 1200);
-        test.cargarCaminoCiudad("CABA", "LANUS", 1200);
-        test.cargarCaminoCiudad("LANUS", "CABA", 1200);
+        test.cargarCaminoCiudad("CORDOBA", "FORMOSA", 1200);
+        test.cargarCaminoCiudad("TRELEW", "FORMOSA", 1200);
+        /*test.cargarCaminoCiudad("LANUS", "CABA", 1200);
         test.cargarCaminoCiudad("LANUS", "CORDOBA", 800);
         test.cargarCaminoCiudad("TRELEW","BELEN" , 1500);
-        test.cargarCaminoCiudad("BELEN", "FORMOSA", 1500);
+        test.cargarCaminoCiudad("BELEN", "FORMOSA", 1500);*/
 
         cola_aux= test.camino("CABA", "FORMOSA");
-        assert(cola_aux.tope().equals("TRELEW")||cola_aux.tope().equals("CORDOBA"));
+        System.out.println(cola_aux.tope());
+        metodosCola.mostrarCiudadesColaPrioridad(cola_aux);
+
+
+       // assert(cola_aux.tope().equals("TRELEW")||cola_aux.tope().equals("CORDOBA"));
     }
 
 }

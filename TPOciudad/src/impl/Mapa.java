@@ -213,20 +213,103 @@ public class Mapa implements MapaTDA{
         return cola;
     } // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
     
-    public ColaPrioridadTDA camino(String ciudadOrigen , String ciudadDestino, ColaStringTDA camino){
+    
+        
+    public ColaPrioridadTDA camino(String ciudadOrigen, String ciudadDestino) {
+        ColaPrioridadTDA resultado = new ColaPrioridadDinamica();
+        resultado.inicializarCola();
+        
+        // Cola para mantener el camino actual
+        ColaStringTDA caminoActual = new ColaStringDinamica();
+        caminoActual.InicializarCola();
+        
+        // Conjunto para evitar ciclos
+        ConjuntoTDA visitadas = new ConjuntoDinamico();
+        visitadas.inicializarConjunto();
+        
+        // Variable para mantener la distancia total
+        int[] distanciaTotal = {0};
+        
+        // Iniciar la búsqueda recursiva
+        if (buscarCamino(ciudadOrigen, ciudadDestino, caminoActual, visitadas, distanciaTotal)) {
+            resultado.acolarPrioridad(distanciaTotal[0], "Distancia Total: " + distanciaTotal[0] + " km");
+            while (!caminoActual.ColaVacia()) {
+                resultado.acolarPrioridad(0, caminoActual.Primero());
+                caminoActual.Desacolar();
+            }
+        } else {
+            resultado.acolarPrioridad(0, "No se encontró camino");
+        }
+        
+        return resultado;
+    }
+    
+    private boolean buscarCamino(String actual, String destino, ColaStringTDA caminoActual, ConjuntoTDA visitadas, int[] distanciaTotal) {
+        // Marcar la ciudad actual como visitada
+        visitadas.agregar(actual);
+        caminoActual.Acolar(actual);
+        
+        // Si hemos llegado al destino, retornar true
+        if (actual.equals(destino)) {
+            return true;
+        }
+        
+        // Obtener todas las ciudades vecinas
+        ColaStringTDA vecinos = mapa.Vertices();
+        
+        while (!vecinos.ColaVacia()) {
+            String vecino = vecinos.Primero();
+            vecinos.Desacolar();
+            
+            // Si el vecino no ha sido visitado y hay un camino hacia él
+            if (!visitadas.pertenece(vecino) && mapa.ExisteArista(actual, vecino)) {
+                int distancia = mapa.PesoArista(actual, vecino);
+                distanciaTotal[0] += distancia;
+                if (buscarCamino(vecino, destino, caminoActual, visitadas, distanciaTotal)) {
+                    return true;
+                }
+                distanciaTotal[0] -= distancia; // Deshacer la distancia si no encontramos un camino
+            }
+        }
+        
+        // Si no encontramos un camino, deshacemos la última ciudad visitada
+        caminoActual.Desacolar();
+        return false;
+    }
+        
+    }  
+
+
+
+        /*public boolean camino(String ciudadOrigen , String ciudadDestino, ColaPrioridadTDA camino){
+        
+        
         ColaStringTDA todasLasCiudades = new ColaStringDinamica();
         ColaPrioridadTDA caminos = new ColaPrioridadDinamica();
         ConjuntoTDA ciudadesPredecesoras= new ConjuntoDinamico();
         String ciudadPuente;
+    
         
         ciudadesPredecesoras=metodosCola.colaToconjunto(this.ciudadesPredecesoras(ciudadDestino));
 
-        if(ciudadesPredecesoras.pertenece(ciudadOrigen)){
-            
-        }
-
         
+            if(ciudadesPredecesoras.pertenece(ciudadOrigen)){
+                camino.acolarPrioridad(mapa.PesoArista(ciudadOrigen, ciudadDestino),ciudadOrigen);
+            else{
 
+                while(!ciudadesPredecesoras.conjuntoVacio()&&){
+                    ciudadPuente=ciudadesPredecesoras.elegir();
+                    if(this.camino(ciudadOrigen, ciudadPuente))
+
+                    ciudadesPredecesoras.sacar(ciudadPuente);
+                }
+
+            }
+
+        }
+        */
+        
+        /* 
         todasLasCiudades.InicializarCola();
         caminos.inicializarCola();
 
@@ -243,8 +326,8 @@ public class Mapa implements MapaTDA{
         return caminos;
 
        
-        
+        */
 
-    } // MOSTRAR LOS KM RECORRIDOS Y LAS CIUDADES PUENTES DE A VER
+    // MOSTRAR LOS KM RECORRIDOS Y LAS CIUDADES PUENTES DE A VER
    
-}
+
