@@ -213,10 +213,19 @@ public class Mapa implements MapaTDA{
         return cola;
     } // MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
     
-    public ColaPrioridadTDA camino(String ciudadOrigen , String ciudadDestino){
+    public ColaPrioridadTDA camino(String ciudadOrigen , String ciudadDestino, ColaStringTDA camino){
         ColaStringTDA todasLasCiudades = new ColaStringDinamica();
         ColaPrioridadTDA caminos = new ColaPrioridadDinamica();
+        ConjuntoTDA ciudadesPredecesoras= new ConjuntoDinamico();
         String ciudadPuente;
+        
+        ciudadesPredecesoras=metodosCola.colaToconjunto(this.ciudadesPredecesoras(ciudadDestino));
+
+        if(ciudadesPredecesoras.pertenece(ciudadOrigen)){
+            
+        }
+
+        
 
         todasLasCiudades.InicializarCola();
         caminos.inicializarCola();
@@ -232,6 +241,10 @@ public class Mapa implements MapaTDA{
         if (mapa.ExisteArista(ciudadOrigen, ciudadDestino))
             caminos.acolarPrioridad(mapa.PesoArista(ciudadOrigen,ciudadDestino), "No tiene ciudad puente");
         return caminos;
+
+       
+        
+
     } // MOSTRAR LOS KM RECORRIDOS Y LAS CIUDADES PUENTES DE A VER
    
 }
