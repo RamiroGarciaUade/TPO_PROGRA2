@@ -4,9 +4,11 @@ package metodos;
 
 import api.ColaPrioridadTDA;
 import api.ColaStringTDA;
+import api.ConjuntoTDA;
 import api.DiccionarioProvinciasTDA;
 
 import impl.ColaStringDinamica;
+import impl.ConjuntoDinamico;
 
 
 
@@ -14,7 +16,17 @@ import impl.ColaStringDinamica;
 
 public class metodosCola {
 
+    public static ConjuntoTDA colaToconjunto(ColaStringTDA cola){
+        ConjuntoTDA conjunto = new ConjuntoDinamico();
+        conjunto.inicializarConjunto();
 
+        while(!cola.ColaVacia()){
+            conjunto.agregar(cola.Primero());
+            cola.Desacolar();
+    
+        }
+        return conjunto;
+    }
     public static void pasarCola(ColaStringTDA cola1 , ColaStringTDA cola2){
         while (!cola2.ColaVacia()) {
             cola2.Desacolar();

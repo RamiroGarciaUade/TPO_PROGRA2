@@ -274,4 +274,32 @@ public class testMapa {
         assert(cola_aux.ColaVacia());
 
     }
+
+    @Test
+    public void camino(){
+        MapaTDA test = new Mapa();
+        ColaPrioridadTDA cola_aux = new ColaPrioridadDinamica();
+
+        test.InicializarMapa();
+        cola_aux.inicializarCola();
+        test.cargarCiudades("BUENOS AIRES", "CABA");
+        test.cargarCiudades("BUENOS AIRES","LANUS");
+        test.cargarCiudades("CATAMARCA", "BELEN");
+        test.cargarCiudades("CORDOBA", "CORDOBA");
+        test.cargarCiudades("CHUBUT", "TRELEW");
+        test.cargarCiudades("FORMOSA", "FORMOSA");
+
+        test.cargarCaminoCiudad("CABA", "TRELEW", 1200);
+        test.cargarCaminoCiudad("TRELEW", "CORDOBA", 2000);
+        test.cargarCaminoCiudad("TRELEW", "CABA", 1200);
+        test.cargarCaminoCiudad("CABA", "LANUS", 1200);
+        test.cargarCaminoCiudad("LANUS", "CABA", 1200);
+        test.cargarCaminoCiudad("LANUS", "CORDOBA", 800);
+        test.cargarCaminoCiudad("TRELEW","BELEN" , 1500);
+        test.cargarCaminoCiudad("BELEN", "FORMOSA", 1500);
+
+        cola_aux= test.camino("CABA", "FORMOSA");
+        assert(cola_aux.tope().equals("TRELEW")||cola_aux.tope().equals("CORDOBA"));
+    }
+
 }
