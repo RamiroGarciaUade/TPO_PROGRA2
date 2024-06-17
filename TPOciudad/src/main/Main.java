@@ -28,8 +28,8 @@ public class Main {
         System.out.println("----------Ciudades Vecinas de CABA----------");
         metodosCola.mostrarCola(t1.ciudadesVecinas("CABA"));
 
-        System.out.println("----------Ciudades Puente entre CABA y Trelew----------");
-        ColaPrioridadTDA a5 = t1.ciudadesPuente("CABA", "Trelew");
+        System.out.println("----------Ciudades Puente entre Tandil y Ciudad de Cordoba----------");
+        ColaPrioridadTDA a5 = t1.ciudadesPuente("Tandil", "Ciudad de Cordoba");
         metodosCola.mostrarCiudadesPuente(a5);
 
         System.out.println("----------Ciudades Predecesoras de Rawson----------");
