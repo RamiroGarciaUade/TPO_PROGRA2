@@ -160,7 +160,8 @@ public class Mapa implements MapaTDA{
         }
         return ciudadesPredecesoras;
 
-    }// MOSTRAR LAS CIUDADES QUE CUMPLA LA CONDICION
+    }
+
     public ColaStringTDA ciudadesExtremo(){
         
         ColaStringTDA todasLasCiudades = mapa.Vertices();
@@ -280,54 +281,6 @@ public class Mapa implements MapaTDA{
         
     }  
 
-
-
-        /*public boolean camino(String ciudadOrigen , String ciudadDestino, ColaPrioridadTDA camino){
-        
-        
-        ColaStringTDA todasLasCiudades = new ColaStringDinamica();
-        ColaPrioridadTDA caminos = new ColaPrioridadDinamica();
-        ConjuntoTDA ciudadesPredecesoras= new ConjuntoDinamico();
-        String ciudadPuente;
-    
-        
-        ciudadesPredecesoras=metodosCola.colaToconjunto(this.ciudadesPredecesoras(ciudadDestino));
-
-        
-            if(ciudadesPredecesoras.pertenece(ciudadOrigen)){
-                camino.acolarPrioridad(mapa.PesoArista(ciudadOrigen, ciudadDestino),ciudadOrigen);
-            else{
-
-                while(!ciudadesPredecesoras.conjuntoVacio()&&){
-                    ciudadPuente=ciudadesPredecesoras.elegir();
-                    if(this.camino(ciudadOrigen, ciudadPuente))
-
-                    ciudadesPredecesoras.sacar(ciudadPuente);
-                }
-
-            }
-
-        }
-        */
-        
-        /* 
-        todasLasCiudades.InicializarCola();
-        caminos.inicializarCola();
-
-        todasLasCiudades=mapa.Vertices();
-        
-        while (!todasLasCiudades.ColaVacia()) {
-            ciudadPuente = todasLasCiudades.Primero();
-            if (mapa.ExisteArista(ciudadOrigen, ciudadPuente) && mapa.ExisteArista(ciudadPuente, ciudadDestino))
-                caminos.acolarPrioridad(mapa.PesoArista(ciudadOrigen, ciudadPuente)+mapa.PesoArista(ciudadPuente, ciudadDestino), ciudadPuente);
-            todasLasCiudades.Desacolar();
-        }
-        if (mapa.ExisteArista(ciudadOrigen, ciudadDestino))
-            caminos.acolarPrioridad(mapa.PesoArista(ciudadOrigen,ciudadDestino), "No tiene ciudad puente");
-        return caminos;
-
-       
-        */
 
 
    

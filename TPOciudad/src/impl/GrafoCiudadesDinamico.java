@@ -6,15 +6,15 @@ import api.GrafoCiudadesTDA;
 public class GrafoCiudadesDinamico implements GrafoCiudadesTDA {
 
     class NodoArista{
-        int km; // valor de la arista
-        NodoGrafo nodoDestino; // a donde apunta la arista
-        NodoArista sigArista; // Cada nodo puede tener varias arista por eso debemos que cada arista a punta a la sigiente arista que puede tener ese nodo
+        int km;
+        NodoGrafo nodoDestino;
+        NodoArista sigArista;
     }
         
     class NodoGrafo{
-        String ciudad ; // valor del nodo
-        NodoArista arista; // las arista que va a tener
-        NodoGrafo sigNodo; // Sig nodo que hay en el l grafo
+        String ciudad ;
+        NodoArista arista;
+        NodoGrafo sigNodo;
     }
 
     NodoGrafo origen;
