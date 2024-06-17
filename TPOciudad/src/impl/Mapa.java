@@ -83,7 +83,6 @@ public class Mapa implements MapaTDA{
             mapa.AgregarVertice(ciudad);
     }
 
-    /*Como precondicion es necesario que ambas ciudades esten pre cargadas */
     public void cargarCaminoCiudad(String ciudadOrigen , String ciudadDestino , int km){
         mapa.AgregarArista(ciudadOrigen, ciudadDestino, km);
     }
