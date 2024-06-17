@@ -236,48 +236,43 @@ public class Mapa implements MapaTDA{
         
         // Variable para mantener la distancia total
         int [] distanciaTotal ={0};
-        
+
         buscarCamino(ciudadOrigen, ciudadDestino, caminoActual, visitadas, distanciaTotal);
+
         return caminoActual;
 
-       
-  
     }
-    
+
     private boolean buscarCamino(String actual, String destino, ColaPrioridadTDA caminoActual, ConjuntoTDA visitadas, int[] distanciaTotal) {
-        // Marcar la ciudad actual como visitada
-        
-        
         // Si hemos llegado al destino, retornar true
         if (actual.equals(destino)) {
             visitadas.agregar(actual);
             caminoActual.acolarPrioridad(distanciaTotal[0],actual);
- 
+
             return true;
         }
-        
+
         // Obtener todas las ciudades vecinas
         ColaStringTDA vecinos = mapa.Vertices();
-        
+
         while (!vecinos.ColaVacia()) {
             String vecino = vecinos.Primero();
             vecinos.Desacolar();
-            
+
             // Si el vecino no ha sido visitado y hay un camino hacia él
             if (!visitadas.pertenece(vecino) && mapa.ExisteArista(actual, vecino)) {
                 int distancia = mapa.PesoArista(actual, vecino);
-                    distanciaTotal[0] += distancia;
+                    distanciaTotal[0] -= distancia;
                     visitadas.agregar(actual);
                 if (buscarCamino(vecino, destino, caminoActual, visitadas, distanciaTotal)) {
-                    distanciaTotal[0]-=distancia;
+                    distanciaTotal[0]+=distancia;
                     caminoActual.acolarPrioridad(distanciaTotal[0],actual);
-                    
+
                     return true;
                 }
-                distanciaTotal[0]-=distancia;
+                distanciaTotal[0] +=  distancia;
             }
         }
-        
 
         return false;
     }

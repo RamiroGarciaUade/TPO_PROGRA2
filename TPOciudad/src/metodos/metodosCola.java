@@ -102,6 +102,13 @@ public class metodosCola {
         }
     }
 
+    public static void mostrarCiudadesPuente(ColaPrioridadTDA c){
+        ColaPrioridadTDA c1=c;
+        while (!c1.esVacia()) {
+            System.out.println(c1.tope());
+            c1.desacolar();
+        }
+    }
     
 
 }
