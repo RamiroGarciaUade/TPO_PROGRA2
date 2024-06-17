@@ -169,7 +169,7 @@ public class Mapa implements MapaTDA{
         ColaStringTDA todasLasCiudades = mapa.Vertices();
         String ciudad;
         ColaStringTDA vecinos;
-        boolean esExtremo = true;
+        boolean esExtremo;
         ColaStringTDA ciudadesExtremo= new ColaStringDinamica();
 
         ciudadesExtremo.InicializarCola();
@@ -200,10 +200,10 @@ public class Mapa implements MapaTDA{
         ColaStringTDA ciudades = new ColaStringDinamica();
         ColaStringTDA ciudades2 = new ColaStringDinamica();
         ConjuntoTDA ciudadesFuertes = new ConjuntoDinamico();
-        ColaStringTDA cola = new ColaStringDinamica();
+        ColaStringTDA cola;
         
         ciudades.InicializarCola();
-        ciudadesFuertes.inicializarConjunto();;
+        ciudadesFuertes.inicializarConjunto();
         ciudades=mapa.Vertices();
 
         while(!ciudades.ColaVacia()){
