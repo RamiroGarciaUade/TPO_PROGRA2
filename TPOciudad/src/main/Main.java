@@ -1,5 +1,6 @@
 package main;
 
+import api.ColaPrioridadTDA;
 import api.MapaTDA;
 import impl.Mapa;
 import metodos.metodosCola;
@@ -27,8 +28,9 @@ public class Main {
         System.out.println("----------Ciudades Vecinas de CABA----------");
         metodosCola.mostrarCola(t1.ciudadesVecinas("CABA"));
 
-        System.out.println("----------Ciudades Puente entre CABA y Trelew----------");
-        metodosCola.mostrarCiudadesColaPrioridad(t1.ciudadesPuente("CABA", "Trelew"));
+        System.out.println("----------Ciudades Puente entre CABA y Ciudad de Cordoba----------");
+        ColaPrioridadTDA a5 = t1.ciudadesPuente("CABA", "Ciudad de Cordoba");
+        metodosCola.mostrarCiudadesColaPrioridad(a5);
 
         System.out.println("----------Ciudades Predecesoras de Rawson----------");
         metodosCola.mostrarCola(t1.ciudadesPredecesoras("Rawson"));
@@ -41,7 +43,8 @@ public class Main {
 
         // Método para buscar camino entre dos ciudades
         System.out.println("----------Camino entre CABA y Ciudad de Córdoba----------");
-        metodosCola.mostrarCiudadesColaPrioridad(t1.camino("CABA", "Ciudad de Córdoba"));
+        ColaPrioridadTDA a6 = t1.camino("CABA","Ciudad de Cordoba" );
+        metodosCola.mostrarCiudadesColaPrioridad(a6);
 
         // Métodos de eliminación
         System.out.println("----------Eliminando ciudad Tandil de Buenos Aires----------");

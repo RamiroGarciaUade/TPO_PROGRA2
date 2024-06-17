@@ -123,26 +123,29 @@ public class Mapa implements MapaTDA{
         return ciudades_vecinas;
     }
 
-     // De. Precondición que las ciudades origen y destino pertenezcan.
-    public ColaPrioridadTDA ciudadesPuente(String ciudadOrigen , String ciudadDestino){
-        
-        ColaStringTDA todasLasCiudades = new ColaStringDinamica();
+    public ColaPrioridadTDA ciudadesPuente(String ciudadOrigen, String ciudadDestino) {
         ColaPrioridadTDA puentes = new ColaPrioridadDinamica();
-
-        todasLasCiudades.InicializarCola();
         puentes.inicializarCola();
 
-        todasLasCiudades=mapa.Vertices();
-        
+        // Obtener todas las ciudades del mapa
+        ColaStringTDA todasLasCiudades = mapa.Vertices();
+
         while (!todasLasCiudades.ColaVacia()) {
             String ciudadPuente = todasLasCiudades.Primero();
-            if (mapa.ExisteArista(ciudadOrigen, ciudadPuente) && mapa.ExisteArista(ciudadPuente, ciudadDestino))
-                puentes.acolarPrioridad(mapa.PesoArista(ciudadOrigen, ciudadPuente)+mapa.PesoArista(ciudadPuente, ciudadDestino), ciudadPuente);
             todasLasCiudades.Desacolar();
+
+            // Verificar si la ciudad puente conecta ciudadOrigen con ciudadDestino
+            if (mapa.ExisteArista(ciudadOrigen, ciudadPuente) && mapa.ExisteArista(ciudadPuente, ciudadDestino)) {
+                // Calcular la suma de las distancias de los caminos
+                int distancia = mapa.PesoArista(ciudadOrigen, ciudadPuente) + mapa.PesoArista(ciudadPuente, ciudadDestino);
+                // Agregar la ciudad puente a la cola de prioridad con la suma de las distancias como prioridad
+                puentes.acolarPrioridad(distancia, ciudadPuente);
+            }
         }
+
         return puentes;
-        
     }
+
     
     public ColaStringTDA ciudadesPredecesoras (String ciudad){
 
