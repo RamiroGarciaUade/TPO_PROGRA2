@@ -10,10 +10,6 @@ import api.DiccionarioProvinciasTDA;
 import impl.ColaStringDinamica;
 import impl.ConjuntoDinamico;
 
-
-
-// CREAR METODO DE PASA UNA COLA A PILA PARA NO REPETIR CODIGO
-
 public class metodosCola {
 
     public static ConjuntoTDA colaToconjunto(ColaStringTDA cola){
